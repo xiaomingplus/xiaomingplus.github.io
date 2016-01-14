@@ -5,16 +5,25 @@
     <link>http://xiaomingplus.com/</link>
     <description>Recent content on We</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 15 Jan 2016 05:07:39 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2016 00:00:00 +0800</lastBuildDate>
     <atom:link href="http://xiaomingplus.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>about</title>
+      <title>关于支持我当网红的计划</title>
       <link>http://xiaomingplus.com/about/</link>
-      <pubDate>Fri, 15 Jan 2016 05:07:39 +0800</pubDate>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate>
       
       <guid>http://xiaomingplus.com/about/</guid>
-      <description></description>
+      <description>&lt;p&gt;如果你愿意支持我当网红，那么你还可以在以下地方关注我：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;github: &lt;a href=&#34;https://github.com/dsgygb&#34;&gt;@dsgygb&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;新浪微博: &lt;a href=&#34;http://weibo.com/u/5668968461&#34;&gt;@小明plus版本&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;twitter: &lt;a href=&#34;https://twitter.com/yangguobao&#34;&gt;@小明plus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;知乎: &lt;a href=&#34;https://www.zhihu.com/people/yang-guo-bao-18&#34;&gt;@杨国宝&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;订阅此博客: &lt;a href=&#34;http://guobaoyang.com/index.xml&#34;&gt;http://guobaoyang.com/index.xml&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>
