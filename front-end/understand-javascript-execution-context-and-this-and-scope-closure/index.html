@@ -1,0 +1,163 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title> 几句话理解javascript中的执行上下文、this、作用域、闭包 &middot; 小明plus </title>
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/poole.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/syntax.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/we.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link href="" rel="alternate" type="application/rss+xml" title="小明plus" />
+</head>
+	<body>
+	<div class="container">
+	<header>
+    <h3 class="site-logo"><a href="http://xiaomingplus.com/">小明plus</a></h3>
+    <nav><ul class="site-menu"><li><a href="/about/">关于我</a></li><li><a href="/categories/%e5%89%8d%e7%ab%af">前端</a></li><li><a href="/categories/%e7%ac%94%e8%ae%b0">笔记</a></li><li><a href="http://xiaomingplus.com/index.xml">RSS</a></li></ul></nav>
+</header>
+
+
+		<div class="content">
+			<div class="post">
+			 	<h1>几句话理解javascript中的执行上下文、this、作用域、闭包</h1>
+				<div class="post-meta single-post-meta"> <span class="post-date">2016年1月6日 </span>
+					<span class="post-meta-sep"> / </span>约4分钟读完</span>
+					<span class="post-meta-sep"> / </span>
+					分类:
+					<span class="post-category"><a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span>
+					
+					
+					<span class="post-meta-sep"> / </span>
+					
+					<span class="post-tags"><a href="/tags/javascript/">#javascript</a></span>
+					
+					<span class="post-tags"><a href="/tags/execution/">#execution</a></span>
+					
+					<span class="post-tags"><a href="/tags/scope/">#scope</a></span>
+					
+					</div>
+			      
+
+<p>这几个问题是javascript问题中的老大难的几个问题，很多文章都有讲过这几个问题，但总也讲不清楚，希望可以尝试用最简单明了的语言把这几个事儿给说清楚了，部分内容并不是官方的定义，而是用简单易懂的语言表达出我所理解的概念。</p>
+
+<h3 id="概念:aaa6854c088f9b36a66d3f82ec1dff83">概念</h3>
+
+<h4 id="执行上下文:aaa6854c088f9b36a66d3f82ec1dff83">执行上下文</h4>
+
+<p>首先明确一点，所有的js代码都是在某个执行上下文中运行的。</p>
+
+<p>执行上下文可以看成以下对象：</p>
+
+<pre><code>executionContextObj = {
+    scopeChain: { /* 作用域链：变量对象+ 所有父执行上下文的变量对象*/ }, 
+    variableObject: { /*变量对象：函数 arguments/参数，内部变量和函数声明 */ }, 
+    this: { /*运行这个函数的对象(动态的) */ } 
+}
+</code></pre>
+
+<p>js解释器实现了一个执行上下文堆栈，并且总是在栈顶的执行上下文中执行代码。</p>
+
+<p>当js解释器初始化执行代码时，它首先默认压入一个全局执行上下文到栈中，在此基础上任何一次函数的调用都将压入一个新的执行上下文到栈中，函数执行结束后该执行上下文被弹出。</p>
+
+<p><img src="http://ww3.sinaimg.cn/large/d9f8fd81gw1exnvbj1v68j20ff080my4.jpg" alt="test" /></p>
+
+<p>创建执行上下文是根据按照以下步骤创建的（有先后顺序）：</p>
+
+<ol>
+<li>创建当前执行上下文的变量对象（在函数中称为活跃对象）：
+
+<ol>
+<li>创建arguments对象（如果是函数调用的话），初始化参数名称和值并创建引用的复制。其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined</li>
+<li>扫描当前执行上下文内的所有函数声明：为发现的每一个函数，在变量对象上创建一个属性，属性名是函数的名字，并且指向函数在内存中的引用，如果变量对象已经包含了相同名字的属性，则替换他的值为当前函数在内存中的引用。（这里的函数扫描只扫描用函数声明定义的函数，不包括函数表达式定义的函数）</li>
+<li>扫描当前执行上下文内的所有变量声明：为发现的每个变量声明，在变量对象上创建一个属性，属性名就是变量的名字，并且将变量的值初始化为undefined，如果变量的名字已经在变量对象里存在，则不会进行任何操作并继续扫描，</li>
+</ol></li>
+<li>求出执行上下文内部“this”的值：在全局运行上下文中（在任何函数体外部），this 指代全局对象，无论是否在严格模式下；在函数内部，this的值取决于函数是如何调用的。（关于求this的值，本文后面再讲）</li>
+<li>初始化作用域链：作用域链对执行上下文中的变量对象的有序访问的链表，包括当前执行上下文的变量对象，以及包含了所有上层变量对象的分层链（在函数创建时静态保存在函数中的）</li>
+</ol>
+
+<p>整个js代码的执行机制就是上面所说的，上面的内容其实包括了执行上下文、作用域链、提升机制，有了以上知识储备，我们再来理解这些难懂的概念就比较容易了：</p>
+
+<h4 id="作用域:aaa6854c088f9b36a66d3f82ec1dff83">作用域</h4>
+
+<p>作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。在js中，变量的作用域有全局作用域和局部作用域两种。</p>
+
+<ul>
+<li>全局作用域：在代码中任何地方都能访问到的对象拥有全局作用域，有以下几种：
+
+<ul>
+<li>在最外层定义的变量；</li>
+<li>全局对象的属性；</li>
+<li>任何地方隐式定义的变量（未定义直接赋值的变量），在任何地方隐式定义的变量都会定义在全局作用域中，即不通过 var 声明直接赋值的变量。</li>
+</ul></li>
+<li>局部作用域：JavaScript的作用域是通过函数来定义的，在一个函数中定义的变量只对这个函数内部可见，称为函数（局部）作用域</li>
+</ul>
+
+<h4 id="this:aaa6854c088f9b36a66d3f82ec1dff83">this</h4>
+
+<p>在函数执行时，this 总是指向调用该函数的对象。要判断 this 的指向，其实就是判断 this 所在的函数属于谁。
+this 出现的场景分为四类，简单的说就是：</p>
+
+<ul>
+<li>有对象就指向调用对象</li>
+<li>没调用对象就指向全局对象</li>
+<li>用new构造就指向新对象</li>
+<li>通过 apply 或 call 或 bind 来改变 this 的所指。</li>
+</ul>
+
+<h4 id="闭包:aaa6854c088f9b36a66d3f82ec1dff83">闭包</h4>
+
+<p>闭包是一种特殊的对象。它由两部分构成：函数，以及创建该函数的环境。环境由闭包创建时在作用域中的任何局部变量组成。闭包是指函数有自由独立的变量。换句话说，定义在闭包中的函数可以“记忆”它创建时候的环境。定义在闭包中的函数总是可以访问其所在的外部函数中声明的参数和变量，即使在其外部函数被返回（寿命终结）了之后。</p>
+
+<h3 id="例子:aaa6854c088f9b36a66d3f82ec1dff83">例子</h3>
+
+<p>//todo</p>
+
+<h3 id="总结:aaa6854c088f9b36a66d3f82ec1dff83">总结</h3>
+
+<p>//todo</p>
+
+<p>参考链接：</p>
+
+<ul>
+<li><a href="http://yanhaijing.com/javascript/2014/04/29/what-is-the-execution-context-in-javascript/">http://yanhaijing.com/javascript/2014/04/29/what-is-the-execution-context-in-javascript/</a></li>
+<li><a href="http://segmentfault.com/a/1190000002692982">http://segmentfault.com/a/1190000002692982</a></li>
+<li><a href="http://blog.5ibc.net/p/17359.html">http://blog.5ibc.net/p/17359.html</a></li>
+<li><a href="http://yanhaijing.com/javascript/2014/04/30/JavaScript-Scoping-and-Hoisting/">http://yanhaijing.com/javascript/2014/04/30/JavaScript-Scoping-and-Hoisting/</a></li>
+<li><a href="https://github.com/alsotang/node-lessons/tree/master/lesson11">https://github.com/alsotang/node-lessons/tree/master/lesson11</a></li>
+<li><a href="http://segmentfault.com/a/1190000000533094">http://segmentfault.com/a/1190000000533094</a></li>
+<li><a href="http://www.k68.org/?p=1831">http://www.k68.org/?p=1831</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures</a></li>
+</ul>
+
+				<div class="single-post-footer">
+					
+					<a class="previous" href="http://xiaomingplus.com/note/hugo-quick-start/"> &laquo;&nbsp;上一篇:hugo博客从创建到托管到github教程</a>
+					
+					
+					<a class="next" href="http://xiaomingplus.com/about/"> 下一篇:关于支持我当网红的计划&nbsp;&raquo;</a>
+					
+				</div>
+			</div>
+			
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'xiaomingplus'; 
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+			
+		</div>
+</div>
+	</body>
+</html>

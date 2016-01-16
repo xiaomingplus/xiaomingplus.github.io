@@ -5,8 +5,309 @@
     <link>http://xiaomingplus.com/</link>
     <description>Recent content on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 06 Jan 2016 02:52:18 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Jan 2016 18:25:18 +0800</lastBuildDate>
     <atom:link href="http://xiaomingplus.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>个人知识管理、文档管理、清单管理、备忘录管理心得分享</title>
+      <link>http://xiaomingplus.com/note/knowledge-management-document-management-todolist-memo/</link>
+      <pubDate>Sat, 16 Jan 2016 18:25:18 +0800</pubDate>
+      
+      <guid>http://xiaomingplus.com/note/knowledge-management-document-management-todolist-memo/</guid>
+      <description>
+
+&lt;p&gt;每个人都希望自己的生活过的井井有条，所以我们不断的去寻找更好的工具和习惯来让自己变得更有效率和条理。&lt;/p&gt;
+
+&lt;p&gt;上次在scuinfo的微信分享了自己在团队协作方面的心得体会，在那篇文章里埋下了一个坑「可能会写成一个系列」，文章发出去之后有很多读者留言说下一篇什么时候，没想到都过去4个月了，今天索性就多写一点。希望能帮到你。&lt;/p&gt;
+
+&lt;p&gt;本文分享的是&lt;strong&gt;个人文件分类，文档管理，知识管理，todoList，清单&lt;/strong&gt;方面的经验，这几个方面我认为无论在什么行业，都会贯穿我们的一生，如果在这几方面能提高效率的话，就可以腾出更多的时间去学习或陪Ta。&lt;/p&gt;
+
+&lt;p&gt;本文是根据OS的系统来写，windows的用户可能需要举一反三，脑补参照。&lt;/p&gt;
+
+&lt;p&gt;本文的口气是教程式的口气，比如说「请在xx建立个xxx」。&lt;/p&gt;
+
+&lt;p&gt;本文是笔者根据自己的习惯总结得出，不一定完全适合你。&lt;/p&gt;
+
+&lt;h2 id=&#34;遵循的基本原则:c75a09d8a3c6a04f69a378e02e8a2c01&#34;&gt;遵循的基本原则&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;对文件分类，知识管理，文档管理，书签&lt;/strong&gt;均采用（inbox + 归档）的方法，也就是说在一个大箱子（我称为inbox）存放各种各样的未done的东西，done了之后，把相应的东西归档到某个分类下,同时删除inbox里的东西，当inbox为空的时候，心情会非常的愉悦。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;对分类的原则是&lt;/strong&gt;：能少一级就少一级。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;对知识管理，文档管理，todolist，清单类&lt;/strong&gt;的产品选择：必须是跨平台，云端同步。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;对这几者，必须用最擅长处理他们的工具来处理他们，而不是用一个工具来管理所有的事情。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;提到的工具如果需要花钱购买的，建议去投资。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;如果条件允许的话，建议购买macbook作为你的个人电脑，除非你有不得已的要用到windows上的工具的需求，那就再买台windows的工作本。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;请养成随时删除，整理inbox里东西的习惯，不然到最后你会很头疼2000+以上的东西的。能删除的就删除，没必要保存下来。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;有些服务可能需要特殊的梯子，所以请常备良好的梯子技能，mac下强烈推荐：鱼摆摆 &lt;a href=&#34;https://ybb1024.com&#34;&gt;https://ybb1024.com&lt;/a&gt; ，一个月9元，主要是可以自动识别国内外网站，做到智能分流。手机和windows翻墙的话，我自己用的是greenvpn，一个月18元，你可以访问&lt;a href=&#34;http://gjsq.me/703414&#34;&gt;http://gjsq.me/703414&lt;/a&gt;注册购买，在这个链接注册会给我一定的佣金。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;图片，视频资源尽量不要归档到本地。放在百度网盘里。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;网络速度一定要快，能力范围内买最贵的套餐（好在总理要互联网+了，基础带宽费用作为第四代工业革命的基础一定会变得廉价。）&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;我在这里提到的分类，几乎涵盖了普通人的所需的所有分类的case，但肯定有读者有自己特殊的case，不过，我相信你会从我分类的方法中举一反三出你该如何分类。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;一定要找一个长一点的时间来做这件事儿，把框架搭好能让你之后做起事情来事半功倍，生活井井有条。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;个人文件分类:c75a09d8a3c6a04f69a378e02e8a2c01&#34;&gt;个人文件分类&lt;/h2&gt;
+
+&lt;p&gt;对于文件分类，系统给的初始分类是&lt;code&gt;document/,picture/,video/,music/,desktop/,download/、application/&lt;/code&gt;这几类，这个分类非常的棒，我的整体分类思路也是按照这个来，不过不会使用系统给的&lt;code&gt;document/,picture/,video/,music/&lt;/code&gt;的文件夹，因为我们需要在网盘里存放这些东西。主要建议使用百度云网盘和dropbox网盘。&lt;/p&gt;
+
+&lt;p&gt;在百度网盘下管理图片，视频，音乐、软件，电子书类，存档的文档（使用频率1年小于5次的）（免费，大容量），建立&lt;code&gt;picture/、music/、video/、soft/、book/、document/、inbox/&lt;/code&gt;这几个文件夹(注意是在百度网盘里创建)。&lt;/p&gt;
+
+&lt;p&gt;在dropbox（需要翻·墙）管理你的文档类文件，下载好dropbox后，dropbox会自动帮你创建好&lt;code&gt;dropbox/&lt;/code&gt;的文件夹，在里面建立&lt;code&gt;document/,picture/,inbox/&lt;/code&gt;文件夹（注意，这个可以在dropbox的本地同步文件夹创建，也可以在网盘里创建,dropbox会自动帮你做同步）。&lt;/p&gt;
+
+&lt;p&gt;在本地根目录新建&lt;code&gt;posts/&lt;/code&gt;文件夹，用来存放自己所有的文章。&lt;/p&gt;
+
+&lt;p&gt;另外，我作为程序员会给自己新建一个&lt;code&gt;project&lt;/code&gt;的文件夹。（其他行业，举一反三）&lt;/p&gt;
+
+&lt;p&gt;主目录下真正要用到的目录结构及说明如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;desktop/
+download/
+application/
+posts/
+music/
+pictures/
+movies/
+project/
+    inbox/
+    svn1/
+        project1/
+            readme.md
+    node/
+        project2/
+            readme.md
+    css/
+        project3/
+            readme.md
+dropbox/
+    document/
+    picture/
+    video/
+    inbox/
+
+/**
+@百度网盘的目录结构
+*/
+inbox/
+document/
+picture/
+music/
+video/
+book/
+application/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;说明:c75a09d8a3c6a04f69a378e02e8a2c01&#34;&gt;说明：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;desktop/&lt;/code&gt;桌面文件夹，是存放一个最近，临时使用的文件的inbox，最好把截图工具的默认保存路径放在这里。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;download/&lt;/code&gt; 下载文件夹，这可能是最有用的一个inbox，存放所有下载文件的inbox，把浏览器，迅雷，qq，其他任何有下载能力的默认目录都指向这里，done了之后，该删除的删除，该归档的归档。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;application/&lt;/code&gt; 应用文件夹，存放软件，应用的目录&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;project/&lt;/code&gt;存放所有的程序项目，如果使用SVN的话，每一台svn服务器对应开一个文件夹，其他的项目则按照相应的分类放在某个目录下，同时把测试的、临时的项目，放在inbox下。同时，每一个项目里面一定要有一个readme.md的文件，来告诉以后的自己你这个项目是干什么的。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;posts/&lt;/code&gt;目录存放你的创作，创作的东西需要在github做版本控制，关于这个，我会在后面的个人文章管理里面详细说明。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;dropbox&lt;/code&gt;这是安装dropbox默认新建的文件夹，这里存放你的重要的文档。二级的&lt;code&gt;document/&lt;/code&gt;目录存放最近要使用的文档，和常用的文档，如果使用频率低于1年5次的请归档到百度网盘。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;百度网盘&lt;/code&gt;这里存放你觉得必要的，但是不常用的东西，比如照片，电影，音乐，电子书什么的，没有done的东西依然放在&lt;code&gt;inbox&lt;/code&gt;下，其他归档的东西则放入相应的文件夹。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;关于文件分类的大概就是这样，总的来说就是一定要用好inbox，inbox为空的时候，一定是你最开心的时候。还有一定要善于利用文件夹快捷方式，把常用的文件夹，放在文件管理的左侧的快捷方式栏。最好为你的每个个人项目都单独在github建立一个项目，能开源则开源，反正在成为大牛前也不会有很多人看你的代码。也可以考虑再github升级为收费账户，最低的可以新建5个项目，每个月7$。&lt;/p&gt;
+
+&lt;h2 id=&#34;个人文档管理:c75a09d8a3c6a04f69a378e02e8a2c01&#34;&gt;个人文档管理&lt;/h2&gt;
+
+&lt;p&gt;个人的文档包括文本文档和其他文档（包括多媒体文档、word等类型的文档）。&lt;/p&gt;
+
+&lt;p&gt;先说文本文档，文本文档请分类保存到&lt;code&gt;posts/&lt;/code&gt;文件夹，请一定要有版本控制，并且，建议按类型来保存，因为现在的文件系统都已经支持按时间排序等功能，并且，一篇文章很可能不是一个时间就完善的，需要不停的修改，雕琢，所以推荐使用github，可以在github建立公开的项目做文章的版本库，同时github的文章也可以直接生成为你的博客，甚至，使用gitbook这个服务，还能生成一本书。关于github做版本控制，博客等不在这篇文章里说，请自行搜索、学习。在此文件夹里分不同的类型作为文章分类的文件夹，比如&lt;code&gt;人生经验/,读书笔记/&lt;/code&gt;等等。&lt;/p&gt;
+
+&lt;p&gt;所有的文本类文档请使用markdown语法！所有的文本类文档请使用markdown语法！所有的文本类文档请使用markdown语法！我使用的软件是macdown。&lt;/p&gt;
+
+&lt;p&gt;再来说其他文档，其他文档请保存到dropbox里。&lt;/p&gt;
+
+&lt;p&gt;dropbox自身是有版本控制的，dropbox会保存你每一次上传的文件的版本，非常适合我们的文档的V1.0,V2.0,V3.0版本，每一个版本都会同步到dropbox上，并且，只有最后的版本才占dropbox的空间！前面就算有1000个版本也不收钱！做图的，做ppt的，做keynote的还不快来用？如果你还没有dropbox，&lt;a href=&#34;https://db.tt/0yf6nEel&#34;&gt;访问：https://db.tt/0yf6nEel&lt;/a&gt;（点击此链接注册会送你500M空间，也会送我500M，说到这里，不得不说uber的优惠码：&lt;code&gt;uberscuinfo&lt;/code&gt;，同样，新用户使用，送你30块，送我30块）.&lt;/p&gt;
+
+&lt;p&gt;多媒体文档初始请直接将&lt;code&gt;music/,movies/,pirture/&lt;/code&gt;作为inbox，不要再分2级目录了，因为这里的文件不会永远都在，一旦用完的，请酌情删除，或迁移到百度云存档，在归档的文件分类中请详细分类。&lt;/p&gt;
+
+&lt;p&gt;我使用tumblr作为我的博客和记录随时迸发出来的人生感悟和体会，全平台，方便，是国外的轻博客鼻祖，可以记录文字+图片+引用+链接等等，没有任何限制。也相当于一个inbox，不过这个inbox我不会删除，只是在写东西的时候会翻自己的博客去找之前记录过相关的零碎感想。&lt;/p&gt;
+
+&lt;p&gt;总的来说，文档里面的东西是相对比较成熟的东西，有逻辑，有思路的一些东西的沉淀，值得用版本控制来做的东西。done了之后，可以选择把东西贴在微信公众平台、博客、长微博等等的平台里。而那些平时的碎碎念，发到tumblr，朋友圈，推特，微博上就可以了。&lt;/p&gt;
+
+&lt;h2 id=&#34;个人知识管理:c75a09d8a3c6a04f69a378e02e8a2c01&#34;&gt;个人知识管理&lt;/h2&gt;
+
+&lt;p&gt;个人知识管理是个人在成长的过程中看到的，学到的，积累的东西，我们需要有个东西记录下这些东西，以方便自己以后在需要的时候能迅速的找到他、迅速的深入某个方面，甚至留给自己的孩子看也是个不错的选择。&lt;/p&gt;
+
+&lt;p&gt;同样遵循的是inbox+归档的方法，使用的工具是pocket，印象笔记。&lt;/p&gt;
+
+&lt;p&gt;首先在印象笔记新建一个名字为inbox的笔记本作为你的默认笔记本，然后新建其他的归档的笔记本来存储你「done」「done」「done」之后的笔记，也就是你在inbox里收藏的文章，必须阅过，并觉得有必要保留的才移动到归档的笔记本里！&lt;/p&gt;
+
+&lt;p&gt;那么，平时在浏览器里看到的文章，我是直接丢到pocket里面（作为一个大的inbox，非常方便的丢，chrome浏览器有插件，一键丢，各个移动端的浏览器也可以一键丢进去），微信公众号的文章，我绑定了「我的印象笔记」的公众号，也可以点击右上角一键保存在印象笔记里。&lt;/p&gt;
+
+&lt;p&gt;这样，我每天在坐车的时候，或者其他空闲时候，就可以阅读我的印象笔记和pocket里面的inbox了，顺便归档或删除。&lt;/p&gt;
+
+&lt;p&gt;以上两个工具都是全平台，云端同步的。非常好用，顺便非常非常的期待微信能把pocket集成进去，或者直接收购它。&lt;/p&gt;
+
+&lt;h2 id=&#34;个人todolist:c75a09d8a3c6a04f69a378e02e8a2c01&#34;&gt;个人todolist&lt;/h2&gt;
+
+&lt;p&gt;使用的工具是系统提供的备忘录+日历+提醒事件，苹果的设备上是自动同步的。&lt;/p&gt;
+
+&lt;h2 id=&#34;清单类:c75a09d8a3c6a04f69a378e02e8a2c01&#34;&gt;清单类&lt;/h2&gt;
+
+&lt;p&gt;当我要列一个清单，我选择的是trello这个工具。非常强大和易用，trello就是一个黑板，在它的黑板上可以新建多个列表。我会在里面记录一些灵感，点子等等其他的清单，同样也是全平台的工具。&lt;/p&gt;
+
+&lt;p&gt;因为trello的黑板本身就是一个大的inbox，所以可以在这个黑板上多建几个要用的清单，如果done了之后可以方便的归档（trello提供的）&lt;/p&gt;
+
+&lt;h2 id=&#34;书签:c75a09d8a3c6a04f69a378e02e8a2c01&#34;&gt;书签&lt;/h2&gt;
+
+&lt;p&gt;同样也是采用inbox+归档的方式，inbox来保存临时的书签，done了之后移动到归档的文件夹。&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;总得来说，我的整个管理的思路都是先把东西丢在inbox里，然后以清空inbox为乐。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;愿你的生活井井有条。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>计算机网络读书笔记</title>
+      <link>http://xiaomingplus.com/note/the-computer-network-note/</link>
+      <pubDate>Sat, 16 Jan 2016 18:22:54 +0800</pubDate>
+      
+      <guid>http://xiaomingplus.com/note/the-computer-network-note/</guid>
+      <description>
+
+&lt;p&gt;该文章可能会一直更新&lt;/p&gt;
+
+&lt;h2 id=&#34;名词简称:87a71f036260722f3a51fe400c4e5599&#34;&gt;名词简称&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;TCP: trasmission control protocol&lt;/li&gt;
+&lt;li&gt;IP: internet protocol&lt;/li&gt;
+&lt;li&gt;API: application programming interface 应用程序编程接口&lt;/li&gt;
+&lt;li&gt;IETF:Internet Engineering Task Force 因特网工程任务组&lt;/li&gt;
+&lt;li&gt;RFC:Request For Comment （RFC最初作为普通的请求评论，以解决因特网先驱者们面临的体系结构问题）&lt;/li&gt;
+&lt;li&gt;P2P:peer-to-peer 是无中心服务器、依靠用户群（peers）交换信息的互联网体系，他的作用在于，减低以往网络传输中的节点，以降低数据丢失的风险。与有中心服务器的中央网络系统不同，对等网络的每个用户端既是一个节点，也有服务器的功能，任何一个节点无法直接找到其他节点，必须依靠其户群进行信息交流。&lt;/li&gt;
+&lt;li&gt;DOS攻击，拒绝服务攻击，Denial-of-Service,使得合法用户不能使用网络、主机或其他基础设施部分。&lt;/li&gt;
+&lt;li&gt;DDOS(distributed DoS)，分布式doc&lt;/li&gt;
+&lt;li&gt;URI，统一资源标识符(Uniform Resource Identifier)。&lt;/li&gt;
+&lt;li&gt;URL，统一资源定位符(Uniform Resource Locator)&lt;/li&gt;
+&lt;li&gt;URN,统一资源&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;定义:87a71f036260722f3a51fe400c4e5599&#34;&gt;定义&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;协议：定义了在两个或多个通信实体之间交换的报文格式和次序，以及在报文传输或接收或其他事件方面所采取的动作。&lt;/li&gt;
+&lt;li&gt;公共因特网：从具体构成来说，是一个世界范围的计算机网络，即它是一个互联了遍及全世界的数以百万计的计算设备的网络，里面的构成包括端系统，通信链路（同轴电缆、铜线、光纤、无线电频谱），分组交换机（路由器、链路层交换机）；从它提供的服务来说，它是根据基础设施向分布式应用程序提供的服务。&lt;/li&gt;
+&lt;li&gt;端系统：与因特网相连的计算机等设备通常称为端系统( end system）或者说是主机(host),分为客户机（client），服务器（server）.&lt;/li&gt;
+&lt;li&gt;Client-Server: 主从式架构意图提供一个可缩放 （scalable）的架构，借此网上的计算机或者处理过程是一个客户端或者服务器。服务器软件一般，但不是总是，运行在强大的专用商业计算机上。另一方面，客户端一般运行在普通个人电脑或者工作站上。服务端的特征：被动的角色（从）、等待来自用户端的要求、处理要求并传回结果；用户端的特征：主动的角色（主）、发送要求、等待直到收到回应。在这个体系中，有一个总是打开的主机称为服务器，它服务于来自许多其他称为客户机的主机请求。在这个体系中，客户机相互之间不直接通信。服务器具有固定的、周知的地址（IP地址）&lt;/li&gt;
+&lt;li&gt;协议层分为五层：应用层、运输层、网络层、链路层、物理层。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>nodejs中exports和module.exports的区别</title>
+      <link>http://xiaomingplus.com/full-stack/understand-nodejs-export-and-module-export/</link>
+      <pubDate>Sat, 16 Jan 2016 18:21:09 +0800</pubDate>
+      
+      <guid>http://xiaomingplus.com/full-stack/understand-nodejs-export-and-module-export/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;用一句话来说明就是，require方能看到的只有module.exports这个对象，它是看不到exports对象的，而我们在编写模块时用到的exports对象实际上只是对module.exports的引用&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;如果你能理解上面这句话，那么下面的都是废话，可以不用看了，因为是用来解释上面这句话的。&lt;/p&gt;
+
+&lt;p&gt;关于引用，可以用下面的例子来让你搞得请清楚楚的：&lt;/p&gt;
+
+&lt;p&gt;首先说一个概念：&lt;/p&gt;
+
+&lt;p&gt;ECMAScript的变量值类型共有两种：&lt;/p&gt;
+
+&lt;p&gt;基本类型 (primitive values) ： 包括Undefined, Null, Boolean, Number和String五种基本数据类型；&lt;/p&gt;
+
+&lt;p&gt;引用类型 (reference values) ： 保存在内存中的对象们，不能直接操作，只能通过保存在变量中的地址引用对其进行操作。&lt;/p&gt;
+
+&lt;p&gt;我们今天要讨论的exports和module.exports属于Object类型，属于引用类型。&lt;/p&gt;
+
+&lt;p&gt;看下面的例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var module = {
+    exports:{
+        name:&amp;quot;我是module的exports属性&amp;quot;
+    }
+};
+var exports = module.exports;  //exports是对module.exports的引用，也就是exports现在指向的内存地址和module.exports指向的内存地址是一样的
+
+console.log(module.exports);    //  { name: &#39;我是module的exports属性&#39; }
+console.log(exports);   //  { name: &#39;我是module的exports属性&#39; }
+
+
+exports.name = &amp;quot;我想改一下名字&amp;quot;;
+
+
+console.log(module.exports);    //  { name: &#39;我想改一下名字&#39; }
+console.log(exports);   //  { name: &#39;我想改一下名字&#39; }
+//看到没，引用就是a和b都操作同一内存地址下的数据
+
+
+//这个时候我在某个文件定义了一个想导出的模块
+var Circle = {
+    name:&amp;quot;我是一个圆&amp;quot;,
+    func:function(x){
+        return x*x*3.14;
+    }
+};
+
+exports = Circle;  //   看清楚了，Circle这个Object在内存中指向了新的地址，所以exports也指向了这个新的地址，和原来的地址没有半毛钱关系了
+
+console.log(module.exports);    //  { name: &#39;我想改一下名字&#39; }
+console.log(exports);   // { name: &#39;我是一个圆&#39;, func: [Function] }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;回到nodejs中，module.exports初始的时候置为&lt;code&gt;{}&lt;/code&gt;,exports也指向这个空对象。&lt;/p&gt;
+
+&lt;p&gt;那么，这样写是没问题的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;exports.name = function(x){
+    console.log(x);
+};
+
+//和下面这个一毛一样，因为都是修改的同一内存地址里的东西
+
+
+module.exports.name = function(x){
+    console.log(x);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是这样写就有了区别了：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;exports = function(x){
+    console.log(x);
+};
+
+//上面的 function是一块新的内存地址，导致exports与module.exports不存在任何关系，而require方能看到的只有module.exports这个对象，看不到exports对象，所以这样写是导不出去的。
+
+//下面的写法是可以导出去的。说句题外话，module.exports除了导出对象，函数，还可以导出所有的类型，比如字符串、数值等。
+module.exports = function(x){
+    console.log(x);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我讲清楚了吧？&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>hugo博客从创建到托管到github教程</title>
@@ -115,6 +416,107 @@ hugo new doc/hugo-quick-start.md
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://xiaomingplus.com&#34;&gt;http://xiaomingplus.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>几句话理解javascript中的执行上下文、this、作用域、闭包</title>
+      <link>http://xiaomingplus.com/front-end/understand-javascript-execution-context-and-this-and-scope-closure/</link>
+      <pubDate>Wed, 06 Jan 2016 02:52:18 +0800</pubDate>
+      
+      <guid>http://xiaomingplus.com/front-end/understand-javascript-execution-context-and-this-and-scope-closure/</guid>
+      <description>
+
+&lt;p&gt;这几个问题是javascript问题中的老大难的几个问题，很多文章都有讲过这几个问题，但总也讲不清楚，希望可以尝试用最简单明了的语言把这几个事儿给说清楚了，部分内容并不是官方的定义，而是用简单易懂的语言表达出我所理解的概念。&lt;/p&gt;
+
+&lt;h3 id=&#34;概念:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;概念&lt;/h3&gt;
+
+&lt;h4 id=&#34;执行上下文:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;执行上下文&lt;/h4&gt;
+
+&lt;p&gt;首先明确一点，所有的js代码都是在某个执行上下文中运行的。&lt;/p&gt;
+
+&lt;p&gt;执行上下文可以看成以下对象：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;executionContextObj = {
+    scopeChain: { /* 作用域链：变量对象+ 所有父执行上下文的变量对象*/ }, 
+    variableObject: { /*变量对象：函数 arguments/参数，内部变量和函数声明 */ }, 
+    this: { /*运行这个函数的对象(动态的) */ } 
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;js解释器实现了一个执行上下文堆栈，并且总是在栈顶的执行上下文中执行代码。&lt;/p&gt;
+
+&lt;p&gt;当js解释器初始化执行代码时，它首先默认压入一个全局执行上下文到栈中，在此基础上任何一次函数的调用都将压入一个新的执行上下文到栈中，函数执行结束后该执行上下文被弹出。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://ww3.sinaimg.cn/large/d9f8fd81gw1exnvbj1v68j20ff080my4.jpg&#34; alt=&#34;test&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;创建执行上下文是根据按照以下步骤创建的（有先后顺序）：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;创建当前执行上下文的变量对象（在函数中称为活跃对象）：
+
+&lt;ol&gt;
+&lt;li&gt;创建arguments对象（如果是函数调用的话），初始化参数名称和值并创建引用的复制。其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined&lt;/li&gt;
+&lt;li&gt;扫描当前执行上下文内的所有函数声明：为发现的每一个函数，在变量对象上创建一个属性，属性名是函数的名字，并且指向函数在内存中的引用，如果变量对象已经包含了相同名字的属性，则替换他的值为当前函数在内存中的引用。（这里的函数扫描只扫描用函数声明定义的函数，不包括函数表达式定义的函数）&lt;/li&gt;
+&lt;li&gt;扫描当前执行上下文内的所有变量声明：为发现的每个变量声明，在变量对象上创建一个属性，属性名就是变量的名字，并且将变量的值初始化为undefined，如果变量的名字已经在变量对象里存在，则不会进行任何操作并继续扫描，&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;求出执行上下文内部“this”的值：在全局运行上下文中（在任何函数体外部），this 指代全局对象，无论是否在严格模式下；在函数内部，this的值取决于函数是如何调用的。（关于求this的值，本文后面再讲）&lt;/li&gt;
+&lt;li&gt;初始化作用域链：作用域链对执行上下文中的变量对象的有序访问的链表，包括当前执行上下文的变量对象，以及包含了所有上层变量对象的分层链（在函数创建时静态保存在函数中的）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;整个js代码的执行机制就是上面所说的，上面的内容其实包括了执行上下文、作用域链、提升机制，有了以上知识储备，我们再来理解这些难懂的概念就比较容易了：&lt;/p&gt;
+
+&lt;h4 id=&#34;作用域:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;作用域&lt;/h4&gt;
+
+&lt;p&gt;作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。在js中，变量的作用域有全局作用域和局部作用域两种。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;全局作用域：在代码中任何地方都能访问到的对象拥有全局作用域，有以下几种：
+
+&lt;ul&gt;
+&lt;li&gt;在最外层定义的变量；&lt;/li&gt;
+&lt;li&gt;全局对象的属性；&lt;/li&gt;
+&lt;li&gt;任何地方隐式定义的变量（未定义直接赋值的变量），在任何地方隐式定义的变量都会定义在全局作用域中，即不通过 var 声明直接赋值的变量。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;局部作用域：JavaScript的作用域是通过函数来定义的，在一个函数中定义的变量只对这个函数内部可见，称为函数（局部）作用域&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;this:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;this&lt;/h4&gt;
+
+&lt;p&gt;在函数执行时，this 总是指向调用该函数的对象。要判断 this 的指向，其实就是判断 this 所在的函数属于谁。
+this 出现的场景分为四类，简单的说就是：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;有对象就指向调用对象&lt;/li&gt;
+&lt;li&gt;没调用对象就指向全局对象&lt;/li&gt;
+&lt;li&gt;用new构造就指向新对象&lt;/li&gt;
+&lt;li&gt;通过 apply 或 call 或 bind 来改变 this 的所指。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;闭包:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;闭包&lt;/h4&gt;
+
+&lt;p&gt;闭包是一种特殊的对象。它由两部分构成：函数，以及创建该函数的环境。环境由闭包创建时在作用域中的任何局部变量组成。闭包是指函数有自由独立的变量。换句话说，定义在闭包中的函数可以“记忆”它创建时候的环境。定义在闭包中的函数总是可以访问其所在的外部函数中声明的参数和变量，即使在其外部函数被返回（寿命终结）了之后。&lt;/p&gt;
+
+&lt;h3 id=&#34;例子:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;例子&lt;/h3&gt;
+
+&lt;p&gt;//todo&lt;/p&gt;
+
+&lt;h3 id=&#34;总结:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;总结&lt;/h3&gt;
+
+&lt;p&gt;//todo&lt;/p&gt;
+
+&lt;p&gt;参考链接：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://yanhaijing.com/javascript/2014/04/29/what-is-the-execution-context-in-javascript/&#34;&gt;http://yanhaijing.com/javascript/2014/04/29/what-is-the-execution-context-in-javascript/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://segmentfault.com/a/1190000002692982&#34;&gt;http://segmentfault.com/a/1190000002692982&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.5ibc.net/p/17359.html&#34;&gt;http://blog.5ibc.net/p/17359.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://yanhaijing.com/javascript/2014/04/30/JavaScript-Scoping-and-Hoisting/&#34;&gt;http://yanhaijing.com/javascript/2014/04/30/JavaScript-Scoping-and-Hoisting/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/alsotang/node-lessons/tree/master/lesson11&#34;&gt;https://github.com/alsotang/node-lessons/tree/master/lesson11&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://segmentfault.com/a/1190000000533094&#34;&gt;http://segmentfault.com/a/1190000000533094&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.k68.org/?p=1831&#34;&gt;http://www.k68.org/?p=1831&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
