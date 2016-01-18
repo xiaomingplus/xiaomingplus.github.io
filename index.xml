@@ -5,8 +5,32 @@
     <link>http://xiaomingplus.com/</link>
     <description>Recent content on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 16 Jan 2016 18:25:18 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Jan 2016 22:25:24 +0800</lastBuildDate>
     <atom:link href="http://xiaomingplus.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>计算机常见英文笔记</title>
+      <link>http://xiaomingplus.com/note/do-you-know-these-english/</link>
+      <pubDate>Sun, 17 Jan 2016 22:25:24 +0800</pubDate>
+      
+      <guid>http://xiaomingplus.com/note/do-you-know-these-english/</guid>
+      <description>&lt;p&gt;本篇文章长期更新，记录学习中遇到的频率高的英文单词，只记录英文，不记录翻译，以此督促牢记。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;interactions&lt;/li&gt;
+&lt;li&gt;handle&lt;/li&gt;
+&lt;li&gt;bundle&lt;/li&gt;
+&lt;li&gt;initial&lt;/li&gt;
+&lt;li&gt;state&lt;/li&gt;
+&lt;li&gt;request&lt;/li&gt;
+&lt;li&gt;response&lt;/li&gt;
+&lt;li&gt;separate&lt;/li&gt;
+&lt;li&gt;render&lt;/li&gt;
+&lt;li&gt;issue&lt;/li&gt;
+&lt;li&gt;directory&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>个人知识管理、文档管理、清单管理、备忘录管理心得分享</title>
