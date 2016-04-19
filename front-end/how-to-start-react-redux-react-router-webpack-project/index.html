@@ -1,0 +1,301 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title> 如何使用webpack开始一个react项目? &middot; 小明plus </title>
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/poole.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/syntax.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/we.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link href="" rel="alternate" type="application/rss+xml" title="小明plus" />
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4f195dd0fb7220c00608390aaf9171c5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+	<body>
+	<div class="container">
+	<header>
+    <h3 class="site-logo"><a href="http://xiaomingplus.com/">小明plus</a></h3>
+    <nav><ul class="site-menu"><li><a href="/about/">关于我</a></li><li><a href="/categories/%e5%85%a8%e6%a0%88">全栈</a></li><li><a href="/categories/%e5%89%8d%e7%ab%af">前端</a></li><li><a href="/categories/%e7%ac%94%e8%ae%b0">笔记</a></li><li><a href="http://xiaomingplus.com/index.xml">RSS</a></li></ul></nav>
+</header>
+
+
+		<div class="content">
+			<div class="post">
+			 	<h1>如何使用webpack开始一个react项目?</h1>
+				<div class="post-meta single-post-meta"> <span class="post-date">2016年4月16日 </span>
+					<span class="post-meta-sep"> / </span>约3分钟读完</span>
+					<span class="post-meta-sep"> / </span>
+					分类:
+					<span class="post-category"><a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span>
+					
+					
+					<span class="post-meta-sep"> / </span>
+					
+					<span class="post-tags"><a href="/tags/javascript/">#javascript</a></span>
+					
+					<span class="post-tags"><a href="/tags/react/">#react</a></span>
+					
+					<span class="post-tags"><a href="/tags/react-router/">#react-router</a></span>
+					
+					<span class="post-tags"><a href="/tags/webpack/">#webpack</a></span>
+					
+					</div>
+			      <p>本文是讲实战操作的，会使用到react,react-router,webpack,babel,react热启动,webpack热启动等，而且本文不准备对原理等进行说明，只想让新手能迅速自己动手生成自己的第一个demo，想了解原理的朋友推荐以下两个教程，讲的非常好。</p>
+
+<ul>
+<li><a href="http://survivejs.com/webpack/advanced-techniques/configuring-react/">http://survivejs.com/webpack/advanced-techniques/configuring-react/</a></li>
+<li><a href="http://cn.redux.js.org/index.html">http://cn.redux.js.org/index.html</a></li>
+</ul>
+
+<p>第一个是一个讲webpack的配置的教程，是英文版的，有国内的翻译，但是太旧了，所以推荐看英文版本的，第二个是国内翻译的redux教程文档，讲的非常好，暂时还挺新的，如果想看英文版，里面也有对应的链接。</p>
+
+<p>直接开始吧，本文只讲如何配置，以及如何写一个简单的示例。</p>
+
+<p><strong>注意！！！本文在os操作系统下保证可以运行，其他操作系统请勿跟随该示例。</strong></p>
+
+<p>第一步：</p>
+
+<pre><code>mkdir react-demo
+cd react-demo
+npm init -y
+npm i webpack webpack-dev-server html-webpack-plugin webpack-merge babel-loader babel-core css-loader style-loader babel-preset-react-hmre babel-preset-es2015 babel-preset-react -D
+mkdir app
+mkdir dist
+mkdir assets
+touch assets/index.tmpl.html
+</code></pre>
+
+<p>第二步，编辑index.tmpl.html为如下:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;
+    &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>第二步，打开你的<code>package.json</code>文件,添加如下字符串:</p>
+
+<pre><code>...
+&quot;scripts&quot;: {    
+  &quot;build&quot;: &quot;webpack&quot;,
+  &quot;start&quot;: &quot;webpack-dev-server&quot;
+},
+&quot;babel&quot;:{
+  &quot;presets&quot;: [
+    &quot;es2015&quot;,
+    &quot;react&quot;
+  ],
+  &quot;env&quot;: {
+      &quot;start&quot;: {
+        &quot;presets&quot;: [
+          &quot;react-hmre&quot;
+        ]
+      }
+    }
+}
+...
+</code></pre>
+
+<p>第三步：在根目录新建一个<code>webpack.config.js</code>的文件,写入如下配置</p>
+
+<pre><code>const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const TARGET = process.env.npm_lifecycle_event;
+process.env.BABEL_ENV = TARGET;
+const PATHS = {
+  app: path.join(__dirname, 'app'),
+  build: path.join(__dirname, 'dist'),
+  template: path.resolve(__dirname, 'assets', 'index.tmpl.html'),
+};
+const common = {
+  entry: {
+    app: PATHS.app,
+  },
+  output: {
+    path: PATHS.build,
+    filename: 'bundle.js',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'react demo',
+      template: PATHS.template,
+      inject: 'body',
+    }),
+  ],
+  module: {
+    loaders: [{
+      test: /\.jsx?$/,
+      loaders: ['babel?cacheDirectory'],
+      include: PATHS.app,
+    }, {
+      test: /\.css$/,
+      loaders: ['style', 'css'],
+      include: PATHS.app,
+    }],
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
+};
+if (TARGET === 'start' || !TARGET) {
+  module.exports = merge(common, {
+    devtool: 'eval-source-map',
+    devServer: {
+      contentBase: '/dist',
+      historyApiFallback: true,
+      hot: true,
+      inline: true,
+      progress: true,
+      stats: 'errors-only',
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+    ],
+
+  });
+}
+if (TARGET === 'build') {
+  module.exports = merge(common, {});
+}
+</code></pre>
+
+<p>第四步：到这里，关于react的需要的webpack方面的配置就结束了，接下来我们来写一个很小的示例来生成一个真正的react文件。</p>
+
+<pre><code>npm i react react-dom react-router -S
+touch app/App.jsx
+touch app/index.jsx
+</code></pre>
+
+<p>编辑<code>App.jsx</code>文件如下:</p>
+
+<pre><code>import React, { Component } from 'react';
+import {
+    Router,
+    Route,
+    Link,
+    IndexLink,
+    IndexRoute,
+    hashHistory,
+} from 'react-router';
+
+const activeStyle = {
+  color: '#53acff',
+};
+const Nav = () =&gt; (
+    &lt;div&gt;
+        &lt;IndexLink onlyActiveOnIndex activeStyle={activeStyle} to=&quot;/&quot;&gt;主页&lt;/IndexLink&gt;
+        &amp;nbsp;
+        &lt;IndexLink onlyActiveOnIndex activeStyle={activeStyle} to=&quot;/address&quot;&gt;地址&lt;/IndexLink&gt;
+        &amp;nbsp;
+    &lt;/div&gt;
+);
+
+const Container = (props) =&gt; &lt;div&gt;
+    &lt;Nav /&gt; { props.children }
+&lt;/div&gt;;
+
+const Twitter = () =&gt; &lt;div&gt;@xiaomingplus twitter&lt;/div&gt;;
+const Instagram = () =&gt; &lt;div&gt;@xiaomingplus instagram&lt;/div&gt;;
+
+const NotFound = () =&gt; (
+    &lt;h1&gt;404.. 找不到该页面!&lt;/h1&gt;
+);
+const Home = () =&gt; &lt;h1&gt;你好，这是主页。&lt;/h1&gt;;
+const Address = (props) =&gt; &lt;div&gt;
+    &lt;br /&gt;
+    &lt;Link activeStyle={{ color: '#53acff' }} to=&quot;/address&quot;&gt;这是Twitter&lt;/Link&gt; &amp;nbsp;
+    &lt;Link to=&quot;/address/instagram&quot;&gt;这是Instagram&lt;/Link&gt;
+    &lt;h1&gt;欢迎互关！&lt;/h1&gt;
+    { props.children }
+&lt;/div&gt;;
+
+
+class App extends Component {
+  construct() {
+  }
+  render() {
+    return (
+        &lt;Router history={hashHistory}&gt;
+            &lt;Route path=&quot;/&quot; component={Container}&gt;
+                &lt;IndexRoute component={Home} /&gt;
+                &lt;Route path=&quot;/address&quot; component={Address}&gt;
+                    &lt;IndexRoute component={Twitter} /&gt;
+                    &lt;Route path=&quot;instagram&quot; component={Instagram} /&gt;
+                &lt;/Route&gt;
+                &lt;Route path=&quot;*&quot; component={NotFound} /&gt;
+            &lt;/Route&gt;
+        &lt;/Router&gt;
+    );
+  }
+}
+
+export default App;
+</code></pre>
+
+<p>编辑<code>index.jsx</code>文件:</p>
+
+<pre><code>import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
+
+ReactDOM.render(
+    &lt;App /&gt;, document.getElementById('root'));
+</code></pre>
+
+<p>ok,到这里你已经实用react-router构建了一个有路由的应用，接下来启动这个应用吧。</p>
+
+<pre><code>npm start
+</code></pre>
+
+<p>用浏览器访问:<code>http://localhost:8080</code>,你将看到如下界面：</p>
+
+<p><img src="http://ww1.sinaimg.cn/large/d9f8fd81gw1f32ivzlj5yj20wi0j240c.jpg" alt="" />
+<img src="http://ww2.sinaimg.cn/large/d9f8fd81gw1f32iyh9nw4j20w60iuwgv.jpg" alt="" /></p>
+
+				<div class="single-post-footer">
+					
+					
+					<a class="next" href="http://xiaomingplus.com/full-stack/ubuntu-install-used-environment/"> 下一篇:ubuntu安装常用环境和软件&nbsp;&raquo;</a>
+					
+				</div>
+			</div>
+			
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'xiaomingplus'; 
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+			
+		</div>
+</div>
+	</body>
+</html>

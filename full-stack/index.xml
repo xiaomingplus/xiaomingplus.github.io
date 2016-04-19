@@ -5,8 +5,28 @@
     <link>http://xiaomingplus.com/full-stack/</link>
     <description>Recent content in Full-stacks on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 16 Jan 2016 18:21:09 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 15 Mar 2016 14:18:09 +0800</lastBuildDate>
     <atom:link href="http://xiaomingplus.com/full-stack/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ubuntu安装常用环境和软件</title>
+      <link>http://xiaomingplus.com/full-stack/ubuntu-install-used-environment/</link>
+      <pubDate>Tue, 15 Mar 2016 14:18:09 +0800</pubDate>
+      
+      <guid>http://xiaomingplus.com/full-stack/ubuntu-install-used-environment/</guid>
+      <description>&lt;p&gt;最近换了新的服务器，把scuinfo重新部署了一下，发现自从换了nodejs后，部署环境变得很轻松，大概几个命令就可以搞定，还是在这记录一下，以备不时之需。主要安装了「nginx」「mysql」「mongodb」「nodejs」「git」「pm2」「cnpm」等环境，不包括php（以前配置环境最愁的就是php，终于不写它了）&lt;/p&gt;
+
+&lt;p&gt;安装nginx：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install nginx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;安装mysql:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>nodejs中exports和module.exports的区别</title>

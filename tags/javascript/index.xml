@@ -5,8 +5,236 @@
     <link>http://xiaomingplus.com/tags/javascript/</link>
     <description>Recent content in Javascript on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 06 Jan 2016 02:52:18 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Apr 2016 02:52:18 +0800</lastBuildDate>
     <atom:link href="http://xiaomingplus.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>如何使用webpack开始一个react项目?</title>
+      <link>http://xiaomingplus.com/front-end/how-to-start-react-redux-react-router-webpack-project/</link>
+      <pubDate>Sat, 16 Apr 2016 02:52:18 +0800</pubDate>
+      
+      <guid>http://xiaomingplus.com/front-end/how-to-start-react-redux-react-router-webpack-project/</guid>
+      <description>&lt;p&gt;本文是讲实战操作的，会使用到react,react-router,webpack,babel,react热启动,webpack热启动等，而且本文不准备对原理等进行说明，只想让新手能迅速自己动手生成自己的第一个demo，想了解原理的朋友推荐以下两个教程，讲的非常好。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://survivejs.com/webpack/advanced-techniques/configuring-react/&#34;&gt;http://survivejs.com/webpack/advanced-techniques/configuring-react/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cn.redux.js.org/index.html&#34;&gt;http://cn.redux.js.org/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;第一个是一个讲webpack的配置的教程，是英文版的，有国内的翻译，但是太旧了，所以推荐看英文版本的，第二个是国内翻译的redux教程文档，讲的非常好，暂时还挺新的，如果想看英文版，里面也有对应的链接。&lt;/p&gt;
+
+&lt;p&gt;直接开始吧，本文只讲如何配置，以及如何写一个简单的示例。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意！！！本文在os操作系统下保证可以运行，其他操作系统请勿跟随该示例。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;第一步：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir react-demo
+cd react-demo
+npm init -y
+npm i webpack webpack-dev-server html-webpack-plugin webpack-merge babel-loader babel-core css-loader style-loader babel-preset-react-hmre babel-preset-es2015 babel-preset-react -D
+mkdir app
+mkdir dist
+mkdir assets
+touch assets/index.tmpl.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第二步，编辑index.tmpl.html为如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta http-equiv=&amp;quot;Content-type&amp;quot; content=&amp;quot;text/html; charset=utf-8&amp;quot;/&amp;gt;
+    &amp;lt;title&amp;gt;&amp;lt;%= htmlWebpackPlugin.options.title %&amp;gt;&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div id=&amp;quot;root&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第二步，打开你的&lt;code&gt;package.json&lt;/code&gt;文件,添加如下字符串:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+&amp;quot;scripts&amp;quot;: {    
+  &amp;quot;build&amp;quot;: &amp;quot;webpack&amp;quot;,
+  &amp;quot;start&amp;quot;: &amp;quot;webpack-dev-server&amp;quot;
+},
+&amp;quot;babel&amp;quot;:{
+  &amp;quot;presets&amp;quot;: [
+    &amp;quot;es2015&amp;quot;,
+    &amp;quot;react&amp;quot;
+  ],
+  &amp;quot;env&amp;quot;: {
+      &amp;quot;start&amp;quot;: {
+        &amp;quot;presets&amp;quot;: [
+          &amp;quot;react-hmre&amp;quot;
+        ]
+      }
+    }
+}
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第三步：在根目录新建一个&lt;code&gt;webpack.config.js&lt;/code&gt;的文件,写入如下配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;const path = require(&#39;path&#39;);
+const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;);
+const webpack = require(&#39;webpack&#39;);
+const merge = require(&#39;webpack-merge&#39;);
+const TARGET = process.env.npm_lifecycle_event;
+process.env.BABEL_ENV = TARGET;
+const PATHS = {
+  app: path.join(__dirname, &#39;app&#39;),
+  build: path.join(__dirname, &#39;dist&#39;),
+  template: path.resolve(__dirname, &#39;assets&#39;, &#39;index.tmpl.html&#39;),
+};
+const common = {
+  entry: {
+    app: PATHS.app,
+  },
+  output: {
+    path: PATHS.build,
+    filename: &#39;bundle.js&#39;,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: &#39;react demo&#39;,
+      template: PATHS.template,
+      inject: &#39;body&#39;,
+    }),
+  ],
+  module: {
+    loaders: [{
+      test: /\.jsx?$/,
+      loaders: [&#39;babel?cacheDirectory&#39;],
+      include: PATHS.app,
+    }, {
+      test: /\.css$/,
+      loaders: [&#39;style&#39;, &#39;css&#39;],
+      include: PATHS.app,
+    }],
+  },
+  resolve: {
+    extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.jsx&#39;],
+  },
+};
+if (TARGET === &#39;start&#39; || !TARGET) {
+  module.exports = merge(common, {
+    devtool: &#39;eval-source-map&#39;,
+    devServer: {
+      contentBase: &#39;/dist&#39;,
+      historyApiFallback: true,
+      hot: true,
+      inline: true,
+      progress: true,
+      stats: &#39;errors-only&#39;,
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+    ],
+
+  });
+}
+if (TARGET === &#39;build&#39;) {
+  module.exports = merge(common, {});
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第四步：到这里，关于react的需要的webpack方面的配置就结束了，接下来我们来写一个很小的示例来生成一个真正的react文件。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm i react react-dom react-router -S
+touch app/App.jsx
+touch app/index.jsx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;编辑&lt;code&gt;App.jsx&lt;/code&gt;文件如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import React, { Component } from &#39;react&#39;;
+import {
+    Router,
+    Route,
+    Link,
+    IndexLink,
+    IndexRoute,
+    hashHistory,
+} from &#39;react-router&#39;;
+
+const activeStyle = {
+  color: &#39;#53acff&#39;,
+};
+const Nav = () =&amp;gt; (
+    &amp;lt;div&amp;gt;
+        &amp;lt;IndexLink onlyActiveOnIndex activeStyle={activeStyle} to=&amp;quot;/&amp;quot;&amp;gt;主页&amp;lt;/IndexLink&amp;gt;
+        &amp;amp;nbsp;
+        &amp;lt;IndexLink onlyActiveOnIndex activeStyle={activeStyle} to=&amp;quot;/address&amp;quot;&amp;gt;地址&amp;lt;/IndexLink&amp;gt;
+        &amp;amp;nbsp;
+    &amp;lt;/div&amp;gt;
+);
+
+const Container = (props) =&amp;gt; &amp;lt;div&amp;gt;
+    &amp;lt;Nav /&amp;gt; { props.children }
+&amp;lt;/div&amp;gt;;
+
+const Twitter = () =&amp;gt; &amp;lt;div&amp;gt;@xiaomingplus twitter&amp;lt;/div&amp;gt;;
+const Instagram = () =&amp;gt; &amp;lt;div&amp;gt;@xiaomingplus instagram&amp;lt;/div&amp;gt;;
+
+const NotFound = () =&amp;gt; (
+    &amp;lt;h1&amp;gt;404.. 找不到该页面!&amp;lt;/h1&amp;gt;
+);
+const Home = () =&amp;gt; &amp;lt;h1&amp;gt;你好，这是主页。&amp;lt;/h1&amp;gt;;
+const Address = (props) =&amp;gt; &amp;lt;div&amp;gt;
+    &amp;lt;br /&amp;gt;
+    &amp;lt;Link activeStyle={{ color: &#39;#53acff&#39; }} to=&amp;quot;/address&amp;quot;&amp;gt;这是Twitter&amp;lt;/Link&amp;gt; &amp;amp;nbsp;
+    &amp;lt;Link to=&amp;quot;/address/instagram&amp;quot;&amp;gt;这是Instagram&amp;lt;/Link&amp;gt;
+    &amp;lt;h1&amp;gt;欢迎互关！&amp;lt;/h1&amp;gt;
+    { props.children }
+&amp;lt;/div&amp;gt;;
+
+
+class App extends Component {
+  construct() {
+  }
+  render() {
+    return (
+        &amp;lt;Router history={hashHistory}&amp;gt;
+            &amp;lt;Route path=&amp;quot;/&amp;quot; component={Container}&amp;gt;
+                &amp;lt;IndexRoute component={Home} /&amp;gt;
+                &amp;lt;Route path=&amp;quot;/address&amp;quot; component={Address}&amp;gt;
+                    &amp;lt;IndexRoute component={Twitter} /&amp;gt;
+                    &amp;lt;Route path=&amp;quot;instagram&amp;quot; component={Instagram} /&amp;gt;
+                &amp;lt;/Route&amp;gt;
+                &amp;lt;Route path=&amp;quot;*&amp;quot; component={NotFound} /&amp;gt;
+            &amp;lt;/Route&amp;gt;
+        &amp;lt;/Router&amp;gt;
+    );
+  }
+}
+
+export default App;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;编辑&lt;code&gt;index.jsx&lt;/code&gt;文件:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom&#39;;
+import App from &#39;./App.jsx&#39;;
+
+ReactDOM.render(
+    &amp;lt;App /&amp;gt;, document.getElementById(&#39;root&#39;));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ok,到这里你已经实用react-router构建了一个有路由的应用，接下来启动这个应用吧。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;用浏览器访问:&lt;code&gt;http://localhost:8080&lt;/code&gt;,你将看到如下界面：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://ww1.sinaimg.cn/large/d9f8fd81gw1f32ivzlj5yj20wi0j240c.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;http://ww2.sinaimg.cn/large/d9f8fd81gw1f32iyh9nw4j20w60iuwgv.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>几句话理解javascript中的执行上下文、this、作用域、闭包</title>
