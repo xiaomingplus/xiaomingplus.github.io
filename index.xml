@@ -43,10 +43,7 @@ Object.getPrototypeOf(Object.prototype) === null;
 
 &lt;h3 id=&#34;使用普通语法创建对象:459a545d6f3664b564482601d4d2ffee&#34;&gt;使用普通语法创建对象&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;var obj1 = {
-  a:1,
-  b:2
-};
+&lt;pre&gt;&lt;code&gt;var obj1 = {};
 
 //这个时候obj1的原型链:
 Object.getPrototypeOf(obj1) === Object.prototype;
