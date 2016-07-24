@@ -1,0 +1,201 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title> 理解javascript中的原型 &middot; 小明plus </title>
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/poole.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/syntax.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/we.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link href="" rel="alternate" type="application/rss+xml" title="小明plus" />
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4f195dd0fb7220c00608390aaf9171c5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+	<body>
+	<div class="container">
+	<header>
+    <h3 class="site-logo"><a href="http://xiaomingplus.com/">小明plus</a></h3>
+    <nav><ul class="site-menu"><li><a href="/about/">关于我</a></li><li><a href="/categories/%e5%85%a8%e6%a0%88">全栈</a></li><li><a href="/categories/%e5%89%8d%e7%ab%af">前端</a></li><li><a href="/categories/%e7%ac%94%e8%ae%b0">笔记</a></li><li><a href="http://xiaomingplus.com/index.xml">RSS</a></li></ul></nav>
+</header>
+
+
+		<div class="content">
+			<div class="post">
+			 	<h1>理解javascript中的原型</h1>
+				<div class="post-meta single-post-meta"> <span class="post-date">2016年7月24日 </span>
+					<span class="post-meta-sep"> / </span>约3分钟读完</span>
+					<span class="post-meta-sep"> / </span>
+					分类:
+					<span class="post-category"><a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span>
+					
+					
+					<span class="post-meta-sep"> / </span>
+					
+					<span class="post-tags"><a href="/tags/javascript/">#javascript</a></span>
+					
+					<span class="post-tags"><a href="/tags/prototype/">#prototype</a></span>
+					
+					<span class="post-tags"><a href="/tags/%E5%8E%9F%E5%9E%8B/">#原型</a></span>
+					
+					</div>
+			      
+
+<h2 id="概述:459a545d6f3664b564482601d4d2ffee">概述</h2>
+
+<p>javascript的灵魂应该就是原型了吧，可以说在js里一切皆有原型的影子，js中用原型实现继承，使得我们在实例对象中除了可以访问实例对象自己的属性外，还可以访问到它的原型的属性，以及它的原型的原型的属性，只要在它的原型链里面我们就都能访问到。不过如果实例对象自身就有某个属性或方法，它就不会再去原型对象寻找这个属性或方法。JavaScript的每个对象都继承自另一个对象，后者称为“原型”（prototype）对象。只有null除外，它没有自己的原型对象。比如说我们定义一个简单的对象：</p>
+
+<pre><code>var o = {
+  a:1,
+  b:2
+}
+// 这里，我们不仅可以访问o自己的属性o.a，我们还可以访问的o的原型Object.prototype的所有属性，比如o.toString(),toString就是Object.prototype里的属性，Object.prototype也有自己的原型:null，null没有原型。
+</code></pre>
+
+<p>js提供了一个获取某个对象原型的方法<code>Object.getPrototypeOf()</code>，我们可以用这个方法来查看<code>o</code>的原型：</p>
+
+<pre><code>var oPrototype = Object.getPrototypeOf(o);
+//我们会发现o的原型就等于下面的这个东西：
+oPrototype === Object.prototype;
+
+//而Object.prototype的原型等于null这个鬼东西
+Object.getPrototypeOf(Object.prototype) === null;
+</code></pre>
+
+<h2 id="js中创建对象的方法:459a545d6f3664b564482601d4d2ffee">js中创建对象的方法</h2>
+
+<p>js中有至少3种方法来创建对象（同时会生成所创建对象的原型链）：</p>
+
+<h3 id="使用普通语法创建对象:459a545d6f3664b564482601d4d2ffee">使用普通语法创建对象</h3>
+
+<pre><code>var obj1 = {
+  a:1,
+  b:2
+};
+
+//这个时候obj1的原型链:
+Object.getPrototypeOf(obj1) === Object.prototype;
+Object.getPrototypeOf(Object.prototype) === null;
+</code></pre>
+
+<h3 id="使用-object-create-创建对象:459a545d6f3664b564482601d4d2ffee">使用<code>Object.create</code>创建对象</h3>
+
+<pre><code>var obj2 = Object.create(Object.prototype);
+
+//这里的obj2其实和obj1是一毛一样的，{}其实相当于Object.create的语法糖，obj2的原型链也和obj1的一样，Object.create方法的第一个参数就是显式的指定要创建的对象的原型。
+</code></pre>
+
+<h3 id="使用函数创建对象:459a545d6f3664b564482601d4d2ffee">使用函数创建对象</h3>
+
+<pre><code>//Object其实是一个函数
+
+var obj3 = new Object();
+
+//这里的obj3其实和obj1和2是一样的，用new来创建对象时，会把函数的prototype属性（这个示例中就是Object.prototype）作为创建对象的原型，也就是
+Object.getPrototypeOf(obj3) === Object.prototype;
+
+//事实上所有的函数都拥有一个prototype属性(事实上也只有函数才拥有这个属性)，所有使用new来创建的对象，他们的原型均是该函数的prototype,比如：
+
+var F = function(){
+
+};
+var a = new F();
+
+//这是a的原型
+Object.getPrototypeOf(a) === F.prototype;
+
+//我们可以a被创建后或创建之前给F.prototype增加一些属性，由于a的原型是F.prototype，所以在a上就能访问到F.prototype的所有属性
+
+F.prototype.test = function(){
+  return 1;
+}
+F.prototype.value = 2;
+
+console.log(a.test()); // 1
+console.log(a.value); //2
+
+
+//所有继承F的对象，都拥有F.prototype的所有属性
+var b = new F();
+
+b.test();// 1  
+b.value; //2
+</code></pre>
+
+<h2 id="理解js中常见类型的原型链:459a545d6f3664b564482601d4d2ffee">理解js中常见类型的原型链</h2>
+
+<p>这个时候，我们可以看看js中常见的一些类型比如数组、函数的原型链。</p>
+
+<pre><code>var arr1 = [];
+//上面这个定义与下面的这个等价：
+var arr2 = new Array(); //Array其实就是个函数，js环境默认给Array函数的prototype添加了一些属性，比如join,push等，所以数组其实就是Array函数的一个实例化对象，所以我们可以在数组中使用Array.prototype中所有的属性
+
+//arr1和arr2的原型链均如下：
+Object.getPrototypeOf(arr1) === Array.prototype;
+Object.getPrototypeOf(Array.prototype) === Object.prototype;
+Object.getPrototypeOf(Object.prototype) === null;
+//null其实是所有对象原型的老祖宗
+</code></pre>
+
+<p>我们再来看看函数：</p>
+
+<pre><code>var fun1 = function(arg){return 1;}
+var fun2 = new Function(&quot;arg&quot;,&quot;return 1;&quot;);
+//fun1和fun2是全等的（但对于js引擎来讲fun1的效率更高，所以不推荐用fun2这种来定义函数
+// fun1和fun2的原型链均如下：
+Object.getPrototypeOf(fun1) === Function.prototype;
+Object.getPrototypeOf(Function.prototype) === Object.prototype;
+Object.getPrototypeOf(Object.prototype) === null;
+
+</code></pre>
+
+<p>在这里，我们不能用<code>Object.create()</code>来创建函数对象和数组,为什么呢？</p>
+
+<pre><code>//Object.create这个方法的定义其实就是下面这个：
+Object.create = function (o) {
+    function F() {}
+    F.prototype = o;
+    return new F();
+  };
+
+//所以我们只能说只要能用create来创建的对象就一定能用new来创建，反之则不然。因为使用new的话F这个函数里面可能要做一些处理，但是Object.create就无法做任何处理。
+</code></pre>
+
+				<div class="single-post-footer">
+					
+					
+					<a class="next" href="http://xiaomingplus.com/front-end/how-to-start-react-redux-react-router-webpack-project/"> 下一篇:如何使用webpack开始一个react项目?&nbsp;&raquo;</a>
+					
+				</div>
+			</div>
+			
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'xiaomingplus'; 
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+			
+		</div>
+</div>
+	</body>
+</html>

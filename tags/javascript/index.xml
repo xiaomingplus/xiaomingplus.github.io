@@ -5,8 +5,138 @@
     <link>http://xiaomingplus.com/tags/javascript/</link>
     <description>Recent content in Javascript on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 16 Apr 2016 02:52:18 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 Jul 2016 18:50:34 +0800</lastBuildDate>
     <atom:link href="http://xiaomingplus.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>理解javascript中的原型</title>
+      <link>http://xiaomingplus.com/front-end/understand-javascript-prototype/</link>
+      <pubDate>Sun, 24 Jul 2016 18:50:34 +0800</pubDate>
+      
+      <guid>http://xiaomingplus.com/front-end/understand-javascript-prototype/</guid>
+      <description>
+
+&lt;h2 id=&#34;概述:459a545d6f3664b564482601d4d2ffee&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;javascript的灵魂应该就是原型了吧，可以说在js里一切皆有原型的影子，js中用原型实现继承，使得我们在实例对象中除了可以访问实例对象自己的属性外，还可以访问到它的原型的属性，以及它的原型的原型的属性，只要在它的原型链里面我们就都能访问到。不过如果实例对象自身就有某个属性或方法，它就不会再去原型对象寻找这个属性或方法。JavaScript的每个对象都继承自另一个对象，后者称为“原型”（prototype）对象。只有null除外，它没有自己的原型对象。比如说我们定义一个简单的对象：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var o = {
+  a:1,
+  b:2
+}
+// 这里，我们不仅可以访问o自己的属性o.a，我们还可以访问的o的原型Object.prototype的所有属性，比如o.toString(),toString就是Object.prototype里的属性，Object.prototype也有自己的原型:null，null没有原型。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;js提供了一个获取某个对象原型的方法&lt;code&gt;Object.getPrototypeOf()&lt;/code&gt;，我们可以用这个方法来查看&lt;code&gt;o&lt;/code&gt;的原型：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var oPrototype = Object.getPrototypeOf(o);
+//我们会发现o的原型就等于下面的这个东西：
+oPrototype === Object.prototype;
+
+//而Object.prototype的原型等于null这个鬼东西
+Object.getPrototypeOf(Object.prototype) === null;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;js中创建对象的方法:459a545d6f3664b564482601d4d2ffee&#34;&gt;js中创建对象的方法&lt;/h2&gt;
+
+&lt;p&gt;js中有至少3种方法来创建对象（同时会生成所创建对象的原型链）：&lt;/p&gt;
+
+&lt;h3 id=&#34;使用普通语法创建对象:459a545d6f3664b564482601d4d2ffee&#34;&gt;使用普通语法创建对象&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;var obj1 = {
+  a:1,
+  b:2
+};
+
+//这个时候obj1的原型链:
+Object.getPrototypeOf(obj1) === Object.prototype;
+Object.getPrototypeOf(Object.prototype) === null;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;使用-object-create-创建对象:459a545d6f3664b564482601d4d2ffee&#34;&gt;使用&lt;code&gt;Object.create&lt;/code&gt;创建对象&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;var obj2 = Object.create(Object.prototype);
+
+//这里的obj2其实和obj1是一毛一样的，{}其实相当于Object.create的语法糖，obj2的原型链也和obj1的一样，Object.create方法的第一个参数就是显式的指定要创建的对象的原型。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;使用函数创建对象:459a545d6f3664b564482601d4d2ffee&#34;&gt;使用函数创建对象&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;//Object其实是一个函数
+
+var obj3 = new Object();
+
+//这里的obj3其实和obj1和2是一样的，用new来创建对象时，会把函数的prototype属性（这个示例中就是Object.prototype）作为创建对象的原型，也就是
+Object.getPrototypeOf(obj3) === Object.prototype;
+
+//事实上所有的函数都拥有一个prototype属性(事实上也只有函数才拥有这个属性)，所有使用new来创建的对象，他们的原型均是该函数的prototype,比如：
+
+var F = function(){
+
+};
+var a = new F();
+
+//这是a的原型
+Object.getPrototypeOf(a) === F.prototype;
+
+//我们可以a被创建后或创建之前给F.prototype增加一些属性，由于a的原型是F.prototype，所以在a上就能访问到F.prototype的所有属性
+
+F.prototype.test = function(){
+  return 1;
+}
+F.prototype.value = 2;
+
+console.log(a.test()); // 1
+console.log(a.value); //2
+
+
+//所有继承F的对象，都拥有F.prototype的所有属性
+var b = new F();
+
+b.test();// 1  
+b.value; //2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;理解js中常见类型的原型链:459a545d6f3664b564482601d4d2ffee&#34;&gt;理解js中常见类型的原型链&lt;/h2&gt;
+
+&lt;p&gt;这个时候，我们可以看看js中常见的一些类型比如数组、函数的原型链。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var arr1 = [];
+//上面这个定义与下面的这个等价：
+var arr2 = new Array(); //Array其实就是个函数，js环境默认给Array函数的prototype添加了一些属性，比如join,push等，所以数组其实就是Array函数的一个实例化对象，所以我们可以在数组中使用Array.prototype中所有的属性
+
+//arr1和arr2的原型链均如下：
+Object.getPrototypeOf(arr1) === Array.prototype;
+Object.getPrototypeOf(Array.prototype) === Object.prototype;
+Object.getPrototypeOf(Object.prototype) === null;
+//null其实是所有对象原型的老祖宗
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们再来看看函数：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var fun1 = function(arg){return 1;}
+var fun2 = new Function(&amp;quot;arg&amp;quot;,&amp;quot;return 1;&amp;quot;);
+//fun1和fun2是全等的（但对于js引擎来讲fun1的效率更高，所以不推荐用fun2这种来定义函数
+// fun1和fun2的原型链均如下：
+Object.getPrototypeOf(fun1) === Function.prototype;
+Object.getPrototypeOf(Function.prototype) === Object.prototype;
+Object.getPrototypeOf(Object.prototype) === null;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在这里，我们不能用&lt;code&gt;Object.create()&lt;/code&gt;来创建函数对象和数组,为什么呢？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//Object.create这个方法的定义其实就是下面这个：
+Object.create = function (o) {
+    function F() {}
+    F.prototype = o;
+    return new F();
+  };
+
+//所以我们只能说只要能用create来创建的对象就一定能用new来创建，反之则不然。因为使用new的话F这个函数里面可能要做一些处理，但是Object.create就无法做任何处理。
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>如何使用webpack开始一个react项目?</title>
@@ -233,107 +363,6 @@ ReactDOM.render(
 
 &lt;p&gt;&lt;img src=&#34;http://ww1.sinaimg.cn/large/d9f8fd81gw1f32ivzlj5yj20wi0j240c.jpg&#34; alt=&#34;&#34; /&gt;
 &lt;img src=&#34;http://ww2.sinaimg.cn/large/d9f8fd81gw1f32iyh9nw4j20w60iuwgv.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>几句话理解javascript中的执行上下文、this、作用域、闭包</title>
-      <link>http://xiaomingplus.com/front-end/understand-javascript-execution-context-and-this-and-scope-closure/</link>
-      <pubDate>Wed, 06 Jan 2016 02:52:18 +0800</pubDate>
-      
-      <guid>http://xiaomingplus.com/front-end/understand-javascript-execution-context-and-this-and-scope-closure/</guid>
-      <description>
-
-&lt;p&gt;这几个问题是javascript问题中的老大难的几个问题，很多文章都有讲过这几个问题，但总也讲不清楚，希望可以尝试用最简单明了的语言把这几个事儿给说清楚了，部分内容并不是官方的定义，而是用简单易懂的语言表达出我所理解的概念。&lt;/p&gt;
-
-&lt;h3 id=&#34;概念:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;概念&lt;/h3&gt;
-
-&lt;h4 id=&#34;执行上下文:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;执行上下文&lt;/h4&gt;
-
-&lt;p&gt;首先明确一点，所有的js代码都是在某个执行上下文中运行的。&lt;/p&gt;
-
-&lt;p&gt;执行上下文可以看成以下对象：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;executionContextObj = {
-    scopeChain: { /* 作用域链：变量对象+ 所有父执行上下文的变量对象*/ }, 
-    variableObject: { /*变量对象：函数 arguments/参数，内部变量和函数声明 */ }, 
-    this: { /*运行这个函数的对象(动态的) */ } 
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;js解释器实现了一个执行上下文堆栈，并且总是在栈顶的执行上下文中执行代码。&lt;/p&gt;
-
-&lt;p&gt;当js解释器初始化执行代码时，它首先默认压入一个全局执行上下文到栈中，在此基础上任何一次函数的调用都将压入一个新的执行上下文到栈中，函数执行结束后该执行上下文被弹出。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://ww3.sinaimg.cn/large/d9f8fd81gw1exnvbj1v68j20ff080my4.jpg&#34; alt=&#34;test&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;创建执行上下文是根据按照以下步骤创建的（有先后顺序）：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;创建当前执行上下文的变量对象（在函数中称为活跃对象）：
-
-&lt;ol&gt;
-&lt;li&gt;创建arguments对象（如果是函数调用的话），初始化参数名称和值并创建引用的复制。其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined&lt;/li&gt;
-&lt;li&gt;扫描当前执行上下文内的所有函数声明：为发现的每一个函数，在变量对象上创建一个属性，属性名是函数的名字，并且指向函数在内存中的引用，如果变量对象已经包含了相同名字的属性，则替换他的值为当前函数在内存中的引用。（这里的函数扫描只扫描用函数声明定义的函数，不包括函数表达式定义的函数）&lt;/li&gt;
-&lt;li&gt;扫描当前执行上下文内的所有变量声明：为发现的每个变量声明，在变量对象上创建一个属性，属性名就是变量的名字，并且将变量的值初始化为undefined，如果变量的名字已经在变量对象里存在，则不会进行任何操作并继续扫描，&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;求出执行上下文内部“this”的值：在全局运行上下文中（在任何函数体外部），this 指代全局对象，无论是否在严格模式下；在函数内部，this的值取决于函数是如何调用的。（关于求this的值，本文后面再讲）&lt;/li&gt;
-&lt;li&gt;初始化作用域链：作用域链对执行上下文中的变量对象的有序访问的链表，包括当前执行上下文的变量对象，以及包含了所有上层变量对象的分层链（在函数创建时静态保存在函数中的）&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;整个js代码的执行机制就是上面所说的，上面的内容其实包括了执行上下文、作用域链、提升机制，有了以上知识储备，我们再来理解这些难懂的概念就比较容易了：&lt;/p&gt;
-
-&lt;h4 id=&#34;作用域:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;作用域&lt;/h4&gt;
-
-&lt;p&gt;作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。在js中，变量的作用域有全局作用域和局部作用域两种。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;全局作用域：在代码中任何地方都能访问到的对象拥有全局作用域，有以下几种：
-
-&lt;ul&gt;
-&lt;li&gt;在最外层定义的变量；&lt;/li&gt;
-&lt;li&gt;全局对象的属性；&lt;/li&gt;
-&lt;li&gt;任何地方隐式定义的变量（未定义直接赋值的变量），在任何地方隐式定义的变量都会定义在全局作用域中，即不通过 var 声明直接赋值的变量。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;局部作用域：JavaScript的作用域是通过函数来定义的，在一个函数中定义的变量只对这个函数内部可见，称为函数（局部）作用域&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;this:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;this&lt;/h4&gt;
-
-&lt;p&gt;在函数执行时，this 总是指向调用该函数的对象。要判断 this 的指向，其实就是判断 this 所在的函数属于谁。
-this 出现的场景分为四类，简单的说就是：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;有对象就指向调用对象&lt;/li&gt;
-&lt;li&gt;没调用对象就指向全局对象&lt;/li&gt;
-&lt;li&gt;用new构造就指向新对象&lt;/li&gt;
-&lt;li&gt;通过 apply 或 call 或 bind 来改变 this 的所指。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;闭包:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;闭包&lt;/h4&gt;
-
-&lt;p&gt;闭包是一种特殊的对象。它由两部分构成：函数，以及创建该函数的环境。环境由闭包创建时在作用域中的任何局部变量组成。闭包是指函数有自由独立的变量。换句话说，定义在闭包中的函数可以“记忆”它创建时候的环境。定义在闭包中的函数总是可以访问其所在的外部函数中声明的参数和变量，即使在其外部函数被返回（寿命终结）了之后。&lt;/p&gt;
-
-&lt;h3 id=&#34;例子:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;例子&lt;/h3&gt;
-
-&lt;p&gt;//todo&lt;/p&gt;
-
-&lt;h3 id=&#34;总结:aaa6854c088f9b36a66d3f82ec1dff83&#34;&gt;总结&lt;/h3&gt;
-
-&lt;p&gt;//todo&lt;/p&gt;
-
-&lt;p&gt;参考链接：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://yanhaijing.com/javascript/2014/04/29/what-is-the-execution-context-in-javascript/&#34;&gt;http://yanhaijing.com/javascript/2014/04/29/what-is-the-execution-context-in-javascript/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://segmentfault.com/a/1190000002692982&#34;&gt;http://segmentfault.com/a/1190000002692982&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://blog.5ibc.net/p/17359.html&#34;&gt;http://blog.5ibc.net/p/17359.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://yanhaijing.com/javascript/2014/04/30/JavaScript-Scoping-and-Hoisting/&#34;&gt;http://yanhaijing.com/javascript/2014/04/30/JavaScript-Scoping-and-Hoisting/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/alsotang/node-lessons/tree/master/lesson11&#34;&gt;https://github.com/alsotang/node-lessons/tree/master/lesson11&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://segmentfault.com/a/1190000000533094&#34;&gt;http://segmentfault.com/a/1190000000533094&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.k68.org/?p=1831&#34;&gt;http://www.k68.org/?p=1831&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
