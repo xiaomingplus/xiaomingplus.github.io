@@ -27,9 +27,9 @@
 &lt;p&gt;执行上下文可以看成以下对象：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;executionContextObj = {
-    scopeChain: { /* 作用域链：变量对象+ 所有父执行上下文的变量对象*/ }, 
-    variableObject: { /*变量对象：函数 arguments/参数，内部变量和函数声明 */ }, 
-    this: { /*运行这个函数的对象(动态的) */ } 
+    scopeChain: { /* 作用域链：变量对象+ 所有父执行上下文的变量对象*/ },
+    variableObject: { /*变量对象：函数 arguments/参数，内部变量和函数声明 */ },
+    this: { /*运行这个函数的对象(动态的) */ }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
