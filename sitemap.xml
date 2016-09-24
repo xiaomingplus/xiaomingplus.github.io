@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://xiaomingplus.com/</loc>
-    <lastmod>2016-07-24T18:50:34+08:00</lastmod>
+    <lastmod>2016-09-24T02:52:18+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xiaomingplus.com/front-end/understand-fetch/</loc>
+    <lastmod>2016-09-24T02:52:18+08:00</lastmod>
   </url>
   
   <url>
@@ -54,10 +59,6 @@
   
   <url>
     <loc>http://xiaomingplus.com/2016-08-27/</loc>
-  </url>
-  
-  <url>
-    <loc>http://xiaomingplus.com/front-end/understand-fetch/</loc>
   </url>
   
 </urlset>
