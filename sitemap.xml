@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://xiaomingplus.com/</loc>
-    <lastmod>2016-09-24T02:52:18+08:00</lastmod>
+    <lastmod>2016-10-05T18:21:09+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xiaomingplus.com/full-stack/how-to-run-for-javascript/</loc>
+    <lastmod>2016-10-05T18:21:09+08:00</lastmod>
   </url>
   
   <url>
@@ -55,10 +60,6 @@
   <url>
     <loc>http://xiaomingplus.com/about/</loc>
     <lastmod>2016-01-01T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://xiaomingplus.com/full-stack/how-to-run-for-javascript/</loc>
   </url>
   
 </urlset>
