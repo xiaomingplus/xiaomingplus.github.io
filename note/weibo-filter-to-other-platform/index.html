@@ -1,0 +1,141 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title> 解决IFTT同步微博不能区分文字微博、图片微博、转发微博的问题 &middot; 小明plus </title>
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/poole.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/syntax.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/we.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link href="" rel="alternate" type="application/rss+xml" title="小明plus" />
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4f195dd0fb7220c00608390aaf9171c5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+	<body>
+	<div class="container">
+	<header>
+    <h3 class="site-logo"><a href="http://xiaomingplus.com/">小明plus</a></h3>
+    <nav><ul class="site-menu"><li><a href="/about/">关于我</a></li><li><a href="/categories/%e5%85%a8%e6%a0%88">全栈</a></li><li><a href="/categories/%e5%89%8d%e7%ab%af">前端</a></li><li><a href="/categories/%e7%ac%94%e8%ae%b0">笔记</a></li><li><a href="http://xiaomingplus.com/index.xml">RSS</a></li></ul></nav>
+</header>
+
+
+		<div class="content">
+			<div class="post">
+			 	<h1>解决IFTT同步微博不能区分文字微博、图片微博、转发微博的问题</h1>
+				<div class="post-meta single-post-meta"> <span class="post-date">2017年9月16日 </span>
+					<span class="post-meta-sep"> / </span>约6分钟读完</span>
+					<span class="post-meta-sep"> / </span>
+					分类:
+					<span class="post-category"><a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span>
+					
+					
+					<span class="post-meta-sep"> / </span>
+					
+					<span class="post-tags"><a href="/tags/%E6%8A%80%E6%9C%AF%E5%BA%94%E7%94%A8/">#技术应用</a></span>
+					
+					</div>
+			      
+
+<p>如何只让你的原创文字微博，原创图片微博自动同步到其他平台？</p>
+
+<p>很多人（包括我）都会使用IFTTT的同步服务来把自己的微博同步到其他第三方平台，目前来讲运行的还不错，但是其中有一个问题很困扰我：IFTTT并不能区分文字微博、图片微博、转发微博这几种类型的帖子从而同步对应类型的帖子到twitter/facebook（其实IFTTT付费用户是可以实现这一点的，但是这个需求付费199$有点不值得，所以我们可以寻求其他服务来解决这个问题），我的方法里还是以IFTTT为核心，以另一个类IFTTT工具<a href="https://www.integromat.com">integromat</a>为过滤器来实现的。</p>
+
+<p>其实国外有很多类似IFTTT的工具，比如Zapier,integromat,Microsoft,他们都提供了比IFTTT更加强大、自定义的功能，但是使用起来门槛相对高一点，但是非程序员一定能学会并使用，因为这些平台的目标群体本来就是非程序员群体。不过，这些工具基本都是收费的，免费用户只提供一点额度，所以说IFTTT还是非常良心的。我在这个教程里面使用的是<a href="https://www.integromat.com">integromat</a>的服务来配合IFTTT，<a href="https://www.integromat.com">integromat</a>提供的免费额度大概每个月能同步300+条微博，如果你不是话痨的话，应该够了吧。</p>
+
+<p>需要说明的是：
+这个方法适合所有人，并不复杂。 该方法可以过滤掉转发微博（直接转发（不带转发理由）/转发别人的转发微博)，并且区分出图片微博，原创微博（会把你直接带转发理由转发原创微博的转发微博（有点绕，我称为一级带文字转发），也当做原创微博），从而同步对应类型到其他平台。</p>
+
+<h2 id="原理:4097e35e2aa66afc2b749679e5e321b1">原理</h2>
+
+<p><img src="http://ww1.sinaimg.cn/large/006tV6Vmgy1fjlj3j4vcdj30p30o6q4j.jpg" alt="" /></p>
+
+<h2 id="操作步骤:4097e35e2aa66afc2b749679e5e321b1">操作步骤</h2>
+
+<p>以同步到twitter为例（你可以参照这个同步到其他任何IFTTT支持的平台</p>
+
+<ol>
+<li><p>先在<a href="https://ifttt.com/create">IFTTT</a>创建2个Applet，分别用于同步原创文字微博到twitter和同步原创图片微博到twitter.</p>
+
+<ul>
+<li>同步原创文字微博到twitter
+
+<ul>
+<li>this:搜索webhook，并选择<code>webhook</code>-&gt;<code>Connect</code>-&gt;<code>Receive a web request</code>,Event Name填写<code>originalWeibo</code>,点击<code>Create trigger</code></li>
+<li>that:搜索twitter,并选择<code>twitter</code>-&gt;<code>Post a tweet</code>,Tweet text填写<code>{{Value1}}</code>,点击Create action</li>
+<li>finish</li>
+</ul></li>
+<li>同步原创图片微博到twitter图片tweet
+
+<ul>
+<li>this:搜索webhook，并选择<code>webhook</code>-&gt;<code>Receive a web request</code>,Event Name填写<code>imageWeibo</code>,点击<code>Create trigger</code></li>
+<li>that:搜索twitter,并选择<code>twitter</code>-&gt;<code>Post a tweet with image</code>,Tweet text填写<code>{{Value1}}</code>,Image URL填写<code>{{Value2}}</code>,点击Create action</li>
+<li>finish</li>
+</ul></li>
+<li>获取webhook的触发地址：ifttt的网站右上角，点击<code>Services</code>,搜索<code>Webhooks</code>,点击<code>Documentation</code>,不要关闭这个网页，这里的Key，待会要用到。</li>
+</ul></li>
+
+<li><p>登录<a href="https://www.integromat.com/en/login">integromat</a>,点击Create a new scenario,作用是接收ifttt请求，并过滤之后，再分别触发上面1中的2个ifttt的webhook规则，ifttt去处理接下来的事情。</p>
+
+<ol>
+<li>webhook步骤（图片见下）：点击?:搜索webhook，并选择<code>webhooks</code>-&gt;<code>Custom Webhook</code>,点击Webhooks图标，看到Webhook的下拉框，点击右侧的<code>Add</code>,<code>Webhook name</code>填写<code>IFTTT weibo webhook</code>,<code>Data structure</code>右侧点击<code>Add</code>,Data Structure name填写<code>Weibo data structure</code>,点击Generator,Content type选择<code>Query String</code>,Sample data填写:<code>text=text&amp;image=imageUrl</code>,点击<code>Save</code>,Add data structure表单也点击<code>Save</code>,Add a hook也点击<code>Save</code>,你会在Webhooks看到一串如(<a href="https://hook.integromat.com/xxx)的url,把这个url记下来，待会儿用于ifttt触发微博后通知integromat">https://hook.integromat.com/xxx)的url,把这个url记下来，待会儿用于ifttt触发微博后通知integromat</a>
+<img src="http://ww1.sinaimg.cn/large/006tV6Vmgy1fjlm9af9taj31g60pddj7.jpg" alt="" /></li>
+<li>点击webhook图标右边的半圆，选择<code>Router</code>,我们要在Router里做过滤:
+
+<ul>
+<li>点击第一条分支的虚线中间部分，点击<code>set up a filter</code>,Lable填<code>image weibo</code>,点击<code>Condition</code>输入框，选左边的<code>image</code>,下拉框选择<code>exists</code>，点击OK，点击这条分支的末端？号，搜索<code>HTTP</code>,选择HTTP,选择<code>Make a request</code>,<code>https://maker.ifttt.com/trigger/imageWeibo/with/key/xxxxxx</code>,这里的xxxxxx要换成刚刚IFTTT步骤里最后一步获取到的Key,Method选择<code>POST</code>,Body Type选择<code>application/x-www-form-urlencode</code>,点击<code>Add item</code>,Key填<code>value1</code>,点击value的输入框，选择<code>text</code>,点击<code>Add item</code>,key填写<code>value2</code>,点击value的输入框，选择<code>image</code>,点击OK;</li>
+<li>点击第二条分支的虚线中间部分，点击<code>set up a filter</code>,Lable填<code>original weibo</code>,点击<code>Condition</code>输入框，选左边的<code>image</code>,下拉框选择<code>Does not exist</code>，点击右下角<code>Add and rule</code>,点击输入框，选择<code>text</code>,下拉框选择<code>Dose not matches Pattern(case insensitive)</code>,下面的输入框输入<code>(Repost)|(转发微博)|(\/\/)|(轉發微博)</code>,点击OK，点击这条分支的末端？号，搜索<code>HTTP</code>,选择HTTP,选择<code>Make a request</code>,<code>https://maker.ifttt.com/trigger/originalWeibo/with/key/xxxxxx</code>,这里的xxxxxx要换成刚刚IFTTT步骤里最后一步获取到的Key,Method选择<code>POST</code>,Body Type选择<code>Application/x-www-form-urlencode</code>,点击<code>Add item</code>,Key填<code>value1</code>,点击value的输入框，选择<code>text</code>,点击OK;</li>
+<li>点击左下角最后一个按钮，保存。点击<a href="https://www.integromat.com/scenarios">右上角Scenarios</a>，在列表里找到你刚刚添加的scenarios，点击右侧的OFF/ON,打开这个任务。</li>
+</ul></li>
+</ol></li>
+
+<li><p>回到<a href="https://ifttt.com/create">IFTTT</a>,创建同步微博内容到integromat的webhook的触发器。</p>
+
+<ul>
+<li>this:搜索weibo,选择<code>New post by you</code></li>
+<li>that:搜索webhook,选择<code>Make a web request</code>,URL填写刚刚第2步里面拿到的<code>https://hook.integromat.com/xxx</code>这样的一个url，Method选择<code>POST</code>,Content Type选择<code>application/x-www-form-urlencode</code>,Body填写<code>text={{Text}}&amp;image={{PhotoURL}}</code>，点击<code>Create Action</code>，点击Finish</li>
+</ul></li>
+</ol>
+
+<p>ok,到这里就全部搞定了！其实花费这些时间去搞这些，归根结底还是因为国内的这些服务接口做的太烂，用户不得不绕一个大圈去实现一些很简单的东西。这些厂商去看看telegram,stack,github的API估计会找个洞钻下去吧。</p>
+
+<p>本篇文章只介绍了关于同步微博这一个应用，其实IFTTT,Zapier,integromat这些服务还可以实现更多，更牛逼的应用，比如当你回到家，自动开灯开空调，当你在微信、微博、浏览器中看到好文章准备稍后阅读时，自动在pocket里添加这篇文章并在todolist里创建一个待办任务，甚至当xxx发生的时候，自动往数据库添加一条记录。等等等等。而这一切都不需要你编程实现。</p>
+
+				<div class="single-post-footer">
+					
+					
+					<a class="next" href="http://xiaomingplus.com/front-end/performanceNote/"> 下一篇:你应该养成的一些提高javascript性能的开发习惯&nbsp;&raquo;</a>
+					
+				</div>
+			</div>
+			
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'xiaomingplus'; 
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+			
+		</div>
+</div>
+	</body>
+</html>

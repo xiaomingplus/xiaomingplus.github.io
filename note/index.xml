@@ -5,8 +5,82 @@
     <link>http://xiaomingplus.com/note/</link>
     <description>Recent content in Notes on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Jan 2016 22:25:24 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Sep 2017 23:38:54 +0800</lastBuildDate>
     <atom:link href="http://xiaomingplus.com/note/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>解决IFTT同步微博不能区分文字微博、图片微博、转发微博的问题</title>
+      <link>http://xiaomingplus.com/note/weibo-filter-to-other-platform/</link>
+      <pubDate>Sat, 16 Sep 2017 23:38:54 +0800</pubDate>
+      
+      <guid>http://xiaomingplus.com/note/weibo-filter-to-other-platform/</guid>
+      <description>
+
+&lt;p&gt;如何只让你的原创文字微博，原创图片微博自动同步到其他平台？&lt;/p&gt;
+
+&lt;p&gt;很多人（包括我）都会使用IFTTT的同步服务来把自己的微博同步到其他第三方平台，目前来讲运行的还不错，但是其中有一个问题很困扰我：IFTTT并不能区分文字微博、图片微博、转发微博这几种类型的帖子从而同步对应类型的帖子到twitter/facebook（其实IFTTT付费用户是可以实现这一点的，但是这个需求付费199$有点不值得，所以我们可以寻求其他服务来解决这个问题），我的方法里还是以IFTTT为核心，以另一个类IFTTT工具&lt;a href=&#34;https://www.integromat.com&#34;&gt;integromat&lt;/a&gt;为过滤器来实现的。&lt;/p&gt;
+
+&lt;p&gt;其实国外有很多类似IFTTT的工具，比如Zapier,integromat,Microsoft,他们都提供了比IFTTT更加强大、自定义的功能，但是使用起来门槛相对高一点，但是非程序员一定能学会并使用，因为这些平台的目标群体本来就是非程序员群体。不过，这些工具基本都是收费的，免费用户只提供一点额度，所以说IFTTT还是非常良心的。我在这个教程里面使用的是&lt;a href=&#34;https://www.integromat.com&#34;&gt;integromat&lt;/a&gt;的服务来配合IFTTT，&lt;a href=&#34;https://www.integromat.com&#34;&gt;integromat&lt;/a&gt;提供的免费额度大概每个月能同步300+条微博，如果你不是话痨的话，应该够了吧。&lt;/p&gt;
+
+&lt;p&gt;需要说明的是：
+这个方法适合所有人，并不复杂。 该方法可以过滤掉转发微博（直接转发（不带转发理由）/转发别人的转发微博)，并且区分出图片微博，原创微博（会把你直接带转发理由转发原创微博的转发微博（有点绕，我称为一级带文字转发），也当做原创微博），从而同步对应类型到其他平台。&lt;/p&gt;
+
+&lt;h2 id=&#34;原理:4097e35e2aa66afc2b749679e5e321b1&#34;&gt;原理&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://ww1.sinaimg.cn/large/006tV6Vmgy1fjlj3j4vcdj30p30o6q4j.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;操作步骤:4097e35e2aa66afc2b749679e5e321b1&#34;&gt;操作步骤&lt;/h2&gt;
+
+&lt;p&gt;以同步到twitter为例（你可以参照这个同步到其他任何IFTTT支持的平台&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;先在&lt;a href=&#34;https://ifttt.com/create&#34;&gt;IFTTT&lt;/a&gt;创建2个Applet，分别用于同步原创文字微博到twitter和同步原创图片微博到twitter.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;同步原创文字微博到twitter
+
+&lt;ul&gt;
+&lt;li&gt;this:搜索webhook，并选择&lt;code&gt;webhook&lt;/code&gt;-&amp;gt;&lt;code&gt;Connect&lt;/code&gt;-&amp;gt;&lt;code&gt;Receive a web request&lt;/code&gt;,Event Name填写&lt;code&gt;originalWeibo&lt;/code&gt;,点击&lt;code&gt;Create trigger&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;that:搜索twitter,并选择&lt;code&gt;twitter&lt;/code&gt;-&amp;gt;&lt;code&gt;Post a tweet&lt;/code&gt;,Tweet text填写&lt;code&gt;{{Value1}}&lt;/code&gt;,点击Create action&lt;/li&gt;
+&lt;li&gt;finish&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;同步原创图片微博到twitter图片tweet
+
+&lt;ul&gt;
+&lt;li&gt;this:搜索webhook，并选择&lt;code&gt;webhook&lt;/code&gt;-&amp;gt;&lt;code&gt;Receive a web request&lt;/code&gt;,Event Name填写&lt;code&gt;imageWeibo&lt;/code&gt;,点击&lt;code&gt;Create trigger&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;that:搜索twitter,并选择&lt;code&gt;twitter&lt;/code&gt;-&amp;gt;&lt;code&gt;Post a tweet with image&lt;/code&gt;,Tweet text填写&lt;code&gt;{{Value1}}&lt;/code&gt;,Image URL填写&lt;code&gt;{{Value2}}&lt;/code&gt;,点击Create action&lt;/li&gt;
+&lt;li&gt;finish&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;获取webhook的触发地址：ifttt的网站右上角，点击&lt;code&gt;Services&lt;/code&gt;,搜索&lt;code&gt;Webhooks&lt;/code&gt;,点击&lt;code&gt;Documentation&lt;/code&gt;,不要关闭这个网页，这里的Key，待会要用到。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;登录&lt;a href=&#34;https://www.integromat.com/en/login&#34;&gt;integromat&lt;/a&gt;,点击Create a new scenario,作用是接收ifttt请求，并过滤之后，再分别触发上面1中的2个ifttt的webhook规则，ifttt去处理接下来的事情。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;webhook步骤（图片见下）：点击?:搜索webhook，并选择&lt;code&gt;webhooks&lt;/code&gt;-&amp;gt;&lt;code&gt;Custom Webhook&lt;/code&gt;,点击Webhooks图标，看到Webhook的下拉框，点击右侧的&lt;code&gt;Add&lt;/code&gt;,&lt;code&gt;Webhook name&lt;/code&gt;填写&lt;code&gt;IFTTT weibo webhook&lt;/code&gt;,&lt;code&gt;Data structure&lt;/code&gt;右侧点击&lt;code&gt;Add&lt;/code&gt;,Data Structure name填写&lt;code&gt;Weibo data structure&lt;/code&gt;,点击Generator,Content type选择&lt;code&gt;Query String&lt;/code&gt;,Sample data填写:&lt;code&gt;text=text&amp;amp;image=imageUrl&lt;/code&gt;,点击&lt;code&gt;Save&lt;/code&gt;,Add data structure表单也点击&lt;code&gt;Save&lt;/code&gt;,Add a hook也点击&lt;code&gt;Save&lt;/code&gt;,你会在Webhooks看到一串如(&lt;a href=&#34;https://hook.integromat.com/xxx)的url,把这个url记下来，待会儿用于ifttt触发微博后通知integromat&#34;&gt;https://hook.integromat.com/xxx)的url,把这个url记下来，待会儿用于ifttt触发微博后通知integromat&lt;/a&gt;
+&lt;img src=&#34;http://ww1.sinaimg.cn/large/006tV6Vmgy1fjlm9af9taj31g60pddj7.jpg&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;点击webhook图标右边的半圆，选择&lt;code&gt;Router&lt;/code&gt;,我们要在Router里做过滤:
+
+&lt;ul&gt;
+&lt;li&gt;点击第一条分支的虚线中间部分，点击&lt;code&gt;set up a filter&lt;/code&gt;,Lable填&lt;code&gt;image weibo&lt;/code&gt;,点击&lt;code&gt;Condition&lt;/code&gt;输入框，选左边的&lt;code&gt;image&lt;/code&gt;,下拉框选择&lt;code&gt;exists&lt;/code&gt;，点击OK，点击这条分支的末端？号，搜索&lt;code&gt;HTTP&lt;/code&gt;,选择HTTP,选择&lt;code&gt;Make a request&lt;/code&gt;,&lt;code&gt;https://maker.ifttt.com/trigger/imageWeibo/with/key/xxxxxx&lt;/code&gt;,这里的xxxxxx要换成刚刚IFTTT步骤里最后一步获取到的Key,Method选择&lt;code&gt;POST&lt;/code&gt;,Body Type选择&lt;code&gt;application/x-www-form-urlencode&lt;/code&gt;,点击&lt;code&gt;Add item&lt;/code&gt;,Key填&lt;code&gt;value1&lt;/code&gt;,点击value的输入框，选择&lt;code&gt;text&lt;/code&gt;,点击&lt;code&gt;Add item&lt;/code&gt;,key填写&lt;code&gt;value2&lt;/code&gt;,点击value的输入框，选择&lt;code&gt;image&lt;/code&gt;,点击OK;&lt;/li&gt;
+&lt;li&gt;点击第二条分支的虚线中间部分，点击&lt;code&gt;set up a filter&lt;/code&gt;,Lable填&lt;code&gt;original weibo&lt;/code&gt;,点击&lt;code&gt;Condition&lt;/code&gt;输入框，选左边的&lt;code&gt;image&lt;/code&gt;,下拉框选择&lt;code&gt;Does not exist&lt;/code&gt;，点击右下角&lt;code&gt;Add and rule&lt;/code&gt;,点击输入框，选择&lt;code&gt;text&lt;/code&gt;,下拉框选择&lt;code&gt;Dose not matches Pattern(case insensitive)&lt;/code&gt;,下面的输入框输入&lt;code&gt;(Repost)|(转发微博)|(\/\/)|(轉發微博)&lt;/code&gt;,点击OK，点击这条分支的末端？号，搜索&lt;code&gt;HTTP&lt;/code&gt;,选择HTTP,选择&lt;code&gt;Make a request&lt;/code&gt;,&lt;code&gt;https://maker.ifttt.com/trigger/originalWeibo/with/key/xxxxxx&lt;/code&gt;,这里的xxxxxx要换成刚刚IFTTT步骤里最后一步获取到的Key,Method选择&lt;code&gt;POST&lt;/code&gt;,Body Type选择&lt;code&gt;Application/x-www-form-urlencode&lt;/code&gt;,点击&lt;code&gt;Add item&lt;/code&gt;,Key填&lt;code&gt;value1&lt;/code&gt;,点击value的输入框，选择&lt;code&gt;text&lt;/code&gt;,点击OK;&lt;/li&gt;
+&lt;li&gt;点击左下角最后一个按钮，保存。点击&lt;a href=&#34;https://www.integromat.com/scenarios&#34;&gt;右上角Scenarios&lt;/a&gt;，在列表里找到你刚刚添加的scenarios，点击右侧的OFF/ON,打开这个任务。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;回到&lt;a href=&#34;https://ifttt.com/create&#34;&gt;IFTTT&lt;/a&gt;,创建同步微博内容到integromat的webhook的触发器。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;this:搜索weibo,选择&lt;code&gt;New post by you&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;that:搜索webhook,选择&lt;code&gt;Make a web request&lt;/code&gt;,URL填写刚刚第2步里面拿到的&lt;code&gt;https://hook.integromat.com/xxx&lt;/code&gt;这样的一个url，Method选择&lt;code&gt;POST&lt;/code&gt;,Content Type选择&lt;code&gt;application/x-www-form-urlencode&lt;/code&gt;,Body填写&lt;code&gt;text={{Text}}&amp;amp;image={{PhotoURL}}&lt;/code&gt;，点击&lt;code&gt;Create Action&lt;/code&gt;，点击Finish&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;ok,到这里就全部搞定了！其实花费这些时间去搞这些，归根结底还是因为国内的这些服务接口做的太烂，用户不得不绕一个大圈去实现一些很简单的东西。这些厂商去看看telegram,stack,github的API估计会找个洞钻下去吧。&lt;/p&gt;
+
+&lt;p&gt;本篇文章只介绍了关于同步微博这一个应用，其实IFTTT,Zapier,integromat这些服务还可以实现更多，更牛逼的应用，比如当你回到家，自动开灯开空调，当你在微信、微博、浏览器中看到好文章准备稍后阅读时，自动在pocket里添加这篇文章并在todolist里创建一个待办任务，甚至当xxx发生的时候，自动往数据库添加一条记录。等等等等。而这一切都不需要你编程实现。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>计算机常见英文笔记</title>

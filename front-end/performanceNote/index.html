@@ -1,0 +1,114 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title> 你应该养成的一些提高javascript性能的开发习惯 &middot; 小明plus </title>
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/poole.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/syntax.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/we.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link href="" rel="alternate" type="application/rss+xml" title="小明plus" />
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4f195dd0fb7220c00608390aaf9171c5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+	<body>
+	<div class="container">
+	<header>
+    <h3 class="site-logo"><a href="http://xiaomingplus.com/">小明plus</a></h3>
+    <nav><ul class="site-menu"><li><a href="/about/">关于我</a></li><li><a href="/categories/%e5%85%a8%e6%a0%88">全栈</a></li><li><a href="/categories/%e5%89%8d%e7%ab%af">前端</a></li><li><a href="/categories/%e7%ac%94%e8%ae%b0">笔记</a></li><li><a href="http://xiaomingplus.com/index.xml">RSS</a></li></ul></nav>
+</header>
+
+
+		<div class="content">
+			<div class="post">
+			 	<h1>你应该养成的一些提高javascript性能的开发习惯</h1>
+				<div class="post-meta single-post-meta"> <span class="post-date">2017年4月9日 </span>
+					<span class="post-meta-sep"> / </span>约3分钟读完</span>
+					
+					</div>
+			      <ol>
+<li><p>最基本的一点：脚本内容尽可能放在dom结构最后面，body结束标签之前，因为<code>&lt;script&gt;</code>标签加载的时候是阻塞的。</p></li>
+
+<li><p>对于对象，层级越深，搜索越慢，比如<code>location.href</code> 要比<code>window.location.href</code>要快,所以对象的层级不宜嵌套过深，超过一次读取的对象属性，应该使用局部变量来缓存对象的属性。比如：</p>
+
+<pre><code>var obj = {
+    a:{
+        b:{
+            c:1,
+            d:2,
+            e:3
+        }
+    }
+}
+//当需要经常访问c,d,e属性的话，最好缓存一下b属性
+let b = obj.a.b;
+</code></pre></li>
+
+<li><p>多使用局部变量，因为函数的执行会搜索整个作用域链，而局部变量优先被搜索到,如果函数里用到了全局变量，如果变量使用频繁，推荐缓存到函数的局部变量里。</p></li>
+
+<li><p>http1中，下载一个100KB的文件比下载4个25KB的文件要快,所以在部署的时候对小文件尽量做合并。</p></li>
+
+<li><p>避免在动态作用域里访问局部变量：不要使用with，最好不要在catch语句中访问局部变量，因为catch会新创建一个局部作用域，在catch语句里访问函数里定义的局部变量，就相当于在函数中访问全局变量一样。catch里应做简单的事情，或者把catch里捕获的错误传递给新的函数去处理。</p></li>
+
+<li><p>dom api主要为了操作 xml 或 hmtl 中的数据，dom与语言无关。浏览器中的dom接口是用javascript实现的，而dom的实现和js引擎是独立、分离的，所以 两个独立部分的功能在链接的时候就会带来性能损耗，所以尽量减少dom操作，缓存需要用到的dom。</p></li>
+
+<li><p>重绘和重排版代价昂贵，所以应该把多个dom操作合并到一个批次中去一次性的执行，而浏览器本身也会优化渲染过程，会将渲染的操作放在渲染队列里，所以我们尽量不要在布局刚改变的时候就去调用一些使得浏览器立即刷新渲染队列的方法，比如：offsetTop,scrollTop,clientTop,getComputedStyle，这些方法将使得浏览器立即刷新渲染队列，我们尽可能延迟调用。</p></li>
+
+<li><p>尽量通过改变css名去改变样式。</p></li>
+
+<li><p>对页面的动画的元素尽量使用绝对定位，这样的话重新渲染就只会影响这个元素，不至于整个文档流重绘</p></li>
+
+<li><p>使用事件托管，用于处理子元素发生的所有。在共用的父元素里统一监听子元素的事件。</p></li>
+
+<li><p>for in循环比其他类型的循环慢了7倍之多，使用Object.keys(obj),然后再使用for循环，基于函数的迭代比基于循环的迭代要慢8倍</p></li>
+
+<li><p>在使用if else时，把最常见的条件放在首位，尽可能让一次运算就进入分支。如果有很多条件的话，用key:value的对象判断或switch会更快。</p></li>
+
+<li><p>避免使用eval，和Function构造器。</p></li>
+
+<li><p>在项目里合理合并js文件，减少http请求的数量，压缩代码，设置缓存。</p></li>
+
+<li><p>利用devtools里的netword,performance,查看网络请求的顺序,耗时，大小，找出需要优化的部分。</p></li>
+</ol>
+
+				<div class="single-post-footer">
+					
+					<a class="previous" href="http://xiaomingplus.com/note/weibo-filter-to-other-platform/"> &laquo;&nbsp;上一篇:解决IFTT同步微博不能区分文字微博、图片微博、转发微博的问题</a>
+					
+					
+					<a class="next" href="http://xiaomingplus.com/full-stack/how-javascript-runing/"> 下一篇:javascript到底是如何运行的?&nbsp;&raquo;</a>
+					
+				</div>
+			</div>
+			
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'xiaomingplus'; 
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+			
+		</div>
+</div>
+	</body>
+</html>

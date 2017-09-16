@@ -3,8 +3,18 @@
   
   <url>
     <loc>http://xiaomingplus.com/</loc>
-    <lastmod>2016-10-08T22:56:36+08:00</lastmod>
+    <lastmod>2017-09-16T23:38:54+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xiaomingplus.com/note/weibo-filter-to-other-platform/</loc>
+    <lastmod>2017-09-16T23:38:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://xiaomingplus.com/front-end/performanceNote/</loc>
+    <lastmod>2017-04-09T19:10:03+08:00</lastmod>
   </url>
   
   <url>
@@ -20,6 +30,16 @@
   <url>
     <loc>http://xiaomingplus.com/front-end/understand-javascript-prototype/</loc>
     <lastmod>2016-07-24T18:50:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://xiaomingplus.com/front-end/cyclejs-intro-todo/</loc>
+    <lastmod>2016-07-04T09:52:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://xiaomingplus.com/front-end/javascript-design/</loc>
+    <lastmod>2016-07-04T09:46:18+08:00</lastmod>
   </url>
   
   <url>
