@@ -5,58 +5,8 @@
     <link>http://xiaomingplus.com/categories/%E5%89%8D%E7%AB%AF/</link>
     <description>Recent content in 前端 on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 04 Jul 2019 09:46:18 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 24 Sep 2016 02:52:18 +0800</lastBuildDate>
     <atom:link href="http://xiaomingplus.com/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>javascript设计模式笔记</title>
-      <link>http://xiaomingplus.com/front-end/javascript-design/</link>
-      <pubDate>Thu, 04 Jul 2019 09:46:18 +0800</pubDate>
-      
-      <guid>http://xiaomingplus.com/front-end/javascript-design/</guid>
-      <description>&lt;p&gt;/dist/
-    pro1/
-        index.html
-        bundle.x12343.js&lt;/p&gt;
-
-&lt;p&gt;/node_modules/
-    xxx_module/
-        test.js
-    /legos_modules/
-        xxx/
-            xxx.js
-        event.js
-        package.json 依赖关系&lt;/p&gt;
-
-&lt;p&gt;/src/
-    pro1/
-        index.html
-        index.js
-        package.json&lt;/p&gt;
-
-&lt;p&gt;var event = require(&amp;lsquo;legos_modules/event&amp;rsquo;);
-event.xx()&lt;/p&gt;
-
-&lt;p&gt;{
-    &amp;ldquo;event&amp;rdquo;:&amp;ldquo;../evnent.js&amp;rdquo;,
-    &amp;ldquo;react&amp;rdquo;:true
-}&lt;/p&gt;
-
-&lt;p&gt;/node_modules/
-/legos_modules/
-/src/
-    pro1/
-        index.js
-    pro2/
-        index.js
-        test.js
-legos.json&lt;/p&gt;
-
-&lt;p&gt;require(&amp;lsquo;legos_event.js&amp;rsquo;)&lt;/p&gt;
-
-&lt;p&gt;__cacheEDx&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>学会fetch的用法</title>
