@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/css/we.css">
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/favicon.png">
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">  
   <link href="" rel="alternate" type="application/rss+xml" title="小明plus" />
 
   <script>
@@ -152,22 +153,24 @@ this 出现的场景分为四类，简单的说就是：</p>
 					<a class="next" href="http://xiaomingplus.com/about/"> 下一篇:关于支持我当网红的计划&nbsp;&raquo;</a>
 					
 				</div>
-			</div>
+            </div>
+            <div id="gitalk-container"></div>
+            
 			
-				<div id="disqus_thread"></div>
-<script type="text/javascript">
-     
-    var disqus_shortname = 'xiaomingplus'; 
-     
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-			
+            <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            
+            <script>
+            var gitalk = new Gitalk({
+              clientID: '2d89547b83bfd6e916a4',
+              clientSecret: '24e361842fe0b049d71818ee8866e20d567491d6',
+              repo: 'xiaomingplus.github.io',
+              owner: 'xiaomingplus',
+              admin: ['xiaomingplus'],
+              
+              distractionFreeMode: false
+            })
+            gitalk.render('gitalk-container')
+            </script>
 		</div>
 </div>
 	</body>
