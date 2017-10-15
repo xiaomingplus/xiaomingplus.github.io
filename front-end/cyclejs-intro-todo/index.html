@@ -3,16 +3,15 @@
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.29" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <title> 使用流的思维方式来构建cycle.js前端应用 &middot; 小明plus </title>
-  <link rel="stylesheet" href="/css/poole.css">
-  <link rel="stylesheet" href="/css/syntax.css">
-  <link rel="stylesheet" href="/css/we.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/poole.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/syntax.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/we.css">
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/favicon.png">
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">  
-  <link href="" rel="alternate" type="application/rss+xml" title="小明plus" />
+  
 
   <script>
     var _hmt = _hmt || [];
@@ -29,7 +28,7 @@
 	<div class="container">
 	<header>
     <h3 class="site-logo"><a href="http://xiaomingplus.com/">小明plus</a></h3>
-    <nav><ul class="site-menu"><li><a href="/about/">关于我</a></li><li><a href="/categories/%e5%85%a8%e6%a0%88">全栈</a></li><li><a href="/categories/%e5%89%8d%e7%ab%af">前端</a></li><li><a href="/categories/%e7%ac%94%e8%ae%b0">笔记</a></li><li><a href="http://xiaomingplus.com/index.xml">RSS</a></li></ul></nav>
+    <nav><ul class="site-menu"><li><a href="/about">关于我</a></li><li><a href="/categories/%e5%85%a8%e6%a0%88">全栈</a></li><li><a href="/categories/%e5%89%8d%e7%ab%af">前端</a></li><li><a href="/categories/%e7%ac%94%e8%ae%b0">笔记</a></li><li><a href="http://xiaomingplus.com/index.xml">RSS</a></li></ul></nav>
 </header>
 
 
@@ -54,9 +53,9 @@
 					</div>
 			      
 
-<p>流是在时间流逝的过程中产生的一系列事件的集合，和数组的概念类似，只不过流的索引是时间，它的值是事件。一个流或者一系列流可以作为另一个流的输入， 流在rxjs,xstream,most等库中是一等公民，而学习流最难的地方就在于思维方式的转变：<strong>一切皆流！</strong></p>
+<p>流是在时间流逝的过程中产生的一系列事件的集合，和数组的概念类似，只不过流的索引是时间，它的值是事件。一个流或者一系列流可以作为另一个流的输入， 流在rxjs,xstream,most等库中是一等公民，而学习流最难的地方就在于思维方式的转变：<strong>一切皆流！</strong></p>
 
-<h3 id="使用流来构建应用的优点主要有:32d5bd8902ef538a3147af3181ad4ef8">使用流来构建应用的优点主要有：</h3>
+<h3 id="使用流来构建应用的优点主要有">使用流来构建应用的优点主要有：</h3>
 
 <ul>
 <li>容易书写</li>
@@ -66,7 +65,7 @@
 <li>写起来爽</li>
 </ul>
 
-<h3 id="适用的场景主要有:32d5bd8902ef538a3147af3181ad4ef8">适用的场景主要有：</h3>
+<h3 id="适用的场景主要有">适用的场景主要有：</h3>
 
 <ul>
 <li>比较复杂的异步场景</li>
@@ -76,7 +75,7 @@
 <li>实时响应</li>
 </ul>
 
-<h3 id="什么是流:32d5bd8902ef538a3147af3181ad4ef8">什么是流？</h3>
+<h3 id="什么是流">什么是流？</h3>
 
 <p>流主要用于异步数据流，我们平常所用的事件，比如click事件，input事件,http请求等这些都是异步数据流,不只是这些，我们可以为任何东西创建一个流,比如变量, 用户的输入, 属性, 缓存, 数据结构，所有的东西都可以创建为流来使用。比如说我们的朋友圈的时间轴的数据就可以是一个数据流,各个业务都可以订阅这个流做出相应的自己的逻辑。</p>
 
@@ -202,23 +201,25 @@ function main(sources) {
 					
 				</div>
             </div>
-            <div id="gitalk-container"></div>
             
-			
-            <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                <div id="gitalk-container"></div>
+<div>2d89547b83bfd6e916a4</div>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+var clientID  = '2d89547b83bfd6e916a4'
+var gitalk = new Gitalk({
+  clientID: clientID,
+  clientSecret: '24e361842fe0b049d71818ee8866e20d567491d6',
+  repo: 'xiaomingplus.github.io',
+  owner: 'xiaomingplus',
+  admin:["xiaomingplus"],
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
             
-            <script>
-            var gitalk = new Gitalk({
-              clientID: '2d89547b83bfd6e916a4',
-              clientSecret: '24e361842fe0b049d71818ee8866e20d567491d6',
-              repo: 'xiaomingplus.github.io',
-              owner: 'xiaomingplus',
-              admin: ['xiaomingplus'],
-              
-              distractionFreeMode: false
-            })
-            gitalk.render('gitalk-container')
-            </script>
+
+            
 		</div>
 </div>
 	</body>

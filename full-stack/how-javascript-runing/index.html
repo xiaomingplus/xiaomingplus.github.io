@@ -3,16 +3,15 @@
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.29" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <title> javascript到底是如何运行的? &middot; 小明plus </title>
-  <link rel="stylesheet" href="/css/poole.css">
-  <link rel="stylesheet" href="/css/syntax.css">
-  <link rel="stylesheet" href="/css/we.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/poole.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/syntax.css">
+  <link rel="stylesheet" href="http://xiaomingplus.com/css/we.css">
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link rel="shortcut icon" href="/favicon.png">
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">  
-  <link href="" rel="alternate" type="application/rss+xml" title="小明plus" />
+  
 
   <script>
     var _hmt = _hmt || [];
@@ -29,7 +28,7 @@
 	<div class="container">
 	<header>
     <h3 class="site-logo"><a href="http://xiaomingplus.com/">小明plus</a></h3>
-    <nav><ul class="site-menu"><li><a href="/about/">关于我</a></li><li><a href="/categories/%e5%85%a8%e6%a0%88">全栈</a></li><li><a href="/categories/%e5%89%8d%e7%ab%af">前端</a></li><li><a href="/categories/%e7%ac%94%e8%ae%b0">笔记</a></li><li><a href="http://xiaomingplus.com/index.xml">RSS</a></li></ul></nav>
+    <nav><ul class="site-menu"><li><a href="/about">关于我</a></li><li><a href="/categories/%e5%85%a8%e6%a0%88">全栈</a></li><li><a href="/categories/%e5%89%8d%e7%ab%af">前端</a></li><li><a href="/categories/%e7%ac%94%e8%ae%b0">笔记</a></li><li><a href="http://xiaomingplus.com/index.xml">RSS</a></li></ul></nav>
 </header>
 
 
@@ -80,22 +79,22 @@
 
 <p>javascript的运行机制可抽象为3部分，一部分是[执行栈]，一部分为[任务队列]，另外一部分为[观察者]。</p>
 
-<h3 id="执行栈:55bab40903563f7c350f32cba87d2249">执行栈</h3>
+<h3 id="执行栈">执行栈</h3>
 
 <p>[执行栈]就是我们常说的js的单线程，也叫主线程，js代码在这里被一行一行的执行，[执行栈]遇到它能搞定的语句，包括所有的计算型的语句，以及普通的函数回调，都能在这里直接执行。当[执行栈]遇到自己处理不了的语句(比如setTimeout，ajax，文件读取等)，那么它会把这个语句交给[观察者].然后继续执行[执行栈]剩下的语句,直到执行栈为空后，它会轮询[任务队列]里的任务。</p>
 
-<h3 id="观察者:55bab40903563f7c350f32cba87d2249">观察者</h3>
+<h3 id="观察者">观察者</h3>
 
 <p>在js中，有多种类型的观察者，包括文件I/O观察者,网络请求观察者等（其实这里的观察者一般来讲就是宿主环境提供的API），[执行栈]会把自己搞不定的事情丢给相应类型的[观察者],[观察者]负责在该事情处理之后会把带着处理结果的回调函数加入[任务队列]。</p>
 
-<h3 id="任务队列:55bab40903563f7c350f32cba87d2249">任务队列</h3>
+<h3 id="任务队列">任务队列</h3>
 
 <p>一个JavaScript运行时包含一个待处理的任务队列，该队列是先进先出的，队列里的每一个任务都与一个函数相关联（一般是调用API时指定的回调函数）。当[执行栈]为空时，[执行栈]会从[任务队列]中取出队列里最前面的一个任务进行处理。处理过程包含了调用与这个任务相关联的函数（以及因此而创建的一个初始栈结构）。当[执行栈]再次为空的时候，意味着该任务处理结束， [执行栈]会循环去[任务队列]取出排在最前面的任务，然后执行之，也就是说每一个任务在执行完成后（执行当前任务的执行栈为空的时候），其它任务才会被执行。如果任务队列里没有任务了，那执行栈会同步的等待任务队列的任务到来。</p>
 
 <p>用一张图来表示的话，如下图所示:
 <img src="http://ww4.sinaimg.cn/large/006bEpFbgw1f8jw4zax6dj30so0l2wfo.jpg" alt="" /></p>
 
-<h3 id="举例来讲:55bab40903563f7c350f32cba87d2249">举例来讲：</h3>
+<h3 id="举例来讲">举例来讲：</h3>
 
 <pre><code>
 //0. 首先初始化本次执行栈,压入一个初始化的东西
@@ -145,30 +144,32 @@ end();//6. 到这里后,执行栈只剩下初始化的那个东西，把end压�
 
 				<div class="single-post-footer">
 					
-					<a class="previous" href="http://xiaomingplus.com/front-end/performanceNote/"> &laquo;&nbsp;上一篇:你应该养成的一些提高javascript性能的开发习惯</a>
+					<a class="previous" href="http://xiaomingplus.com/front-end/performancenote/"> &laquo;&nbsp;上一篇:你应该养成的一些提高javascript性能的开发习惯</a>
 					
 					
 					<a class="next" href="http://xiaomingplus.com/front-end/understand-fetch/"> 下一篇:学会fetch的用法&nbsp;&raquo;</a>
 					
 				</div>
             </div>
-            <div id="gitalk-container"></div>
             
-			
-            <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                <div id="gitalk-container"></div>
+<div>2d89547b83bfd6e916a4</div>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+var clientID  = '2d89547b83bfd6e916a4'
+var gitalk = new Gitalk({
+  clientID: clientID,
+  clientSecret: '24e361842fe0b049d71818ee8866e20d567491d6',
+  repo: 'xiaomingplus.github.io',
+  owner: 'xiaomingplus',
+  admin:["xiaomingplus"],
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
             
-            <script>
-            var gitalk = new Gitalk({
-              clientID: '2d89547b83bfd6e916a4',
-              clientSecret: '24e361842fe0b049d71818ee8866e20d567491d6',
-              repo: 'xiaomingplus.github.io',
-              owner: 'xiaomingplus',
-              admin: ['xiaomingplus'],
-              
-              distractionFreeMode: false
-            })
-            gitalk.render('gitalk-container')
-            </script>
+
+            
 		</div>
 </div>
 	</body>
