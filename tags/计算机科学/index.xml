@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>计算机科学 on 小明plus</title>
-    <link>http://xiaomingplus.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/</link>
+    <link>https://xiaomingplus.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/</link>
     <description>Recent content in 计算机科学 on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 16 Jan 2016 18:22:54 +0800</lastBuildDate>
     
-        <atom:link href="http://xiaomingplus.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://xiaomingplus.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>计算机网络读书笔记</title>
-      <link>http://xiaomingplus.com/note/the-computer-network-note/</link>
+      <link>https://xiaomingplus.com/note/the-computer-network-note/</link>
       <pubDate>Sat, 16 Jan 2016 18:22:54 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/note/the-computer-network-note/</guid>
+      <guid>https://xiaomingplus.com/note/the-computer-network-note/</guid>
       <description>该文章可能会一直更新 名词简称 TCP: trasmission control protocol IP: internet protocol API: application programming interface 应用程序编程接口 IETF:Internet Engineering Task Force 因特网工程任务组 RFC:Request For Comment （RFC最初作为普通的请求评论，以解决因特网</description>
     </item>
     

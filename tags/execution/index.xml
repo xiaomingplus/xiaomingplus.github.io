@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Execution on 小明plus</title>
-    <link>http://xiaomingplus.com/tags/execution/</link>
+    <link>https://xiaomingplus.com/tags/execution/</link>
     <description>Recent content in Execution on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 06 Jan 2016 02:52:18 +0800</lastBuildDate>
     
-        <atom:link href="http://xiaomingplus.com/tags/execution/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://xiaomingplus.com/tags/execution/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>几句话理解javascript中的执行上下文、this、作用域、闭包</title>
-      <link>http://xiaomingplus.com/front-end/understand-javascript-execution-context-and-this-and-scope-closure/</link>
+      <link>https://xiaomingplus.com/front-end/understand-javascript-execution-context-and-this-and-scope-closure/</link>
       <pubDate>Wed, 06 Jan 2016 02:52:18 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/front-end/understand-javascript-execution-context-and-this-and-scope-closure/</guid>
+      <guid>https://xiaomingplus.com/front-end/understand-javascript-execution-context-and-this-and-scope-closure/</guid>
       <description>这几个问题是javascript问题中的老大难的几个问题，很多文章都有讲过这几个问题，但总也讲不清楚，希望可以尝试用最简单明了的语言把这几个</description>
     </item>
     

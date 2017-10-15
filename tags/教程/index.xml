@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>教程 on 小明plus</title>
-    <link>http://xiaomingplus.com/tags/%E6%95%99%E7%A8%8B/</link>
+    <link>https://xiaomingplus.com/tags/%E6%95%99%E7%A8%8B/</link>
     <description>Recent content in 教程 on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 06 Jan 2016 02:52:18 +0800</lastBuildDate>
     
-        <atom:link href="http://xiaomingplus.com/tags/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://xiaomingplus.com/tags/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>hugo博客从创建到托管到github教程</title>
-      <link>http://xiaomingplus.com/note/hugo-quick-start/</link>
+      <link>https://xiaomingplus.com/note/hugo-quick-start/</link>
       <pubDate>Wed, 06 Jan 2016 02:52:18 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/note/hugo-quick-start/</guid>
+      <guid>https://xiaomingplus.com/note/hugo-quick-start/</guid>
       <description>通过本教程，你可以拥有一个使用hugo生成的github静态博客。 1.安装hugo mac os：brew install hugo (如果没有brew，参考官方教程 https://gohugo.io/tutorials/installing-on-mac/) wi</description>
     </item>
     

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Prototype on 小明plus</title>
-    <link>http://xiaomingplus.com/tags/prototype/</link>
+    <link>https://xiaomingplus.com/tags/prototype/</link>
     <description>Recent content in Prototype on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 24 Jul 2016 18:50:34 +0800</lastBuildDate>
     
-        <atom:link href="http://xiaomingplus.com/tags/prototype/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://xiaomingplus.com/tags/prototype/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>理解javascript中的原型</title>
-      <link>http://xiaomingplus.com/front-end/understand-javascript-prototype/</link>
+      <link>https://xiaomingplus.com/front-end/understand-javascript-prototype/</link>
       <pubDate>Sun, 24 Jul 2016 18:50:34 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/front-end/understand-javascript-prototype/</guid>
+      <guid>https://xiaomingplus.com/front-end/understand-javascript-prototype/</guid>
       <description>概述 javascript的灵魂应该就是原型了吧，可以说在js里一切皆有原型的影子，js中用原型实现继承，使得我们在实例对象中除了可以访问实例</description>
     </item>
     

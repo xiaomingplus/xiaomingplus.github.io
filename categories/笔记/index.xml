@@ -2,56 +2,56 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>笔记 on 小明plus</title>
-    <link>http://xiaomingplus.com/categories/%E7%AC%94%E8%AE%B0/</link>
+    <link>https://xiaomingplus.com/categories/%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in 笔记 on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 16 Oct 2017 02:04:18 +0800</lastBuildDate>
     
-        <atom:link href="http://xiaomingplus.com/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://xiaomingplus.com/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>mac新手开发装机必备软件</title>
-      <link>http://xiaomingplus.com/note/new-mac-soft/</link>
+      <link>https://xiaomingplus.com/note/new-mac-soft/</link>
       <pubDate>Mon, 16 Oct 2017 02:04:18 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/note/new-mac-soft/</guid>
+      <guid>https://xiaomingplus.com/note/new-mac-soft/</guid>
       <description>命令行客户端 iterm 效率客户端 alfred 清理客户端 腾讯电脑管家 mysql数据库客户端 sequel pro 压缩客户端 The Unarchiver 电脑保持常亮客户端 Caffeine 邮件客户端 airmail markdown客户</description>
     </item>
     
     <item>
       <title>解决IFTTT同步微博不能区分文字微博、图片微博、转发微博的问题</title>
-      <link>http://xiaomingplus.com/note/weibo-filter-to-other-platform/</link>
+      <link>https://xiaomingplus.com/note/weibo-filter-to-other-platform/</link>
       <pubDate>Sat, 16 Sep 2017 23:38:54 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/note/weibo-filter-to-other-platform/</guid>
+      <guid>https://xiaomingplus.com/note/weibo-filter-to-other-platform/</guid>
       <description>如何只让你的原创文字微博，原创图片微博自动同步到其他平台？ 很多人（包括我）都会使用IFTTT的同步服务来把自己的微博同步到其他第三方平台，目</description>
     </item>
     
     <item>
       <title>个人知识管理、文档管理、清单管理、备忘录管理心得分享</title>
-      <link>http://xiaomingplus.com/note/knowledge-management-document-management-todolist-memo/</link>
+      <link>https://xiaomingplus.com/note/knowledge-management-document-management-todolist-memo/</link>
       <pubDate>Sat, 16 Jan 2016 18:25:18 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/note/knowledge-management-document-management-todolist-memo/</guid>
+      <guid>https://xiaomingplus.com/note/knowledge-management-document-management-todolist-memo/</guid>
       <description>每个人都希望自己的生活过的井井有条，所以我们不断的去寻找更好的工具和习惯来让自己变得更有效率和条理。 上次在scuinfo的微信分享了自己在团</description>
     </item>
     
     <item>
       <title>计算机网络读书笔记</title>
-      <link>http://xiaomingplus.com/note/the-computer-network-note/</link>
+      <link>https://xiaomingplus.com/note/the-computer-network-note/</link>
       <pubDate>Sat, 16 Jan 2016 18:22:54 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/note/the-computer-network-note/</guid>
+      <guid>https://xiaomingplus.com/note/the-computer-network-note/</guid>
       <description>该文章可能会一直更新 名词简称 TCP: trasmission control protocol IP: internet protocol API: application programming interface 应用程序编程接口 IETF:Internet Engineering Task Force 因特网工程任务组 RFC:Request For Comment （RFC最初作为普通的请求评论，以解决因特网</description>
     </item>
     
     <item>
       <title>hugo博客从创建到托管到github教程</title>
-      <link>http://xiaomingplus.com/note/hugo-quick-start/</link>
+      <link>https://xiaomingplus.com/note/hugo-quick-start/</link>
       <pubDate>Wed, 06 Jan 2016 02:52:18 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/note/hugo-quick-start/</guid>
+      <guid>https://xiaomingplus.com/note/hugo-quick-start/</guid>
       <description>通过本教程，你可以拥有一个使用hugo生成的github静态博客。 1.安装hugo mac os：brew install hugo (如果没有brew，参考官方教程 https://gohugo.io/tutorials/installing-on-mac/) wi</description>
     </item>
     

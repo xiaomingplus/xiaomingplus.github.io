@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyclejs on 小明plus</title>
-    <link>http://xiaomingplus.com/tags/cyclejs/</link>
+    <link>https://xiaomingplus.com/tags/cyclejs/</link>
     <description>Recent content in Cyclejs on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 04 Jul 2016 09:52:18 +0800</lastBuildDate>
     
-        <atom:link href="http://xiaomingplus.com/tags/cyclejs/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://xiaomingplus.com/tags/cyclejs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用流的思维方式来构建cycle.js前端应用</title>
-      <link>http://xiaomingplus.com/front-end/cyclejs-intro-todo/</link>
+      <link>https://xiaomingplus.com/front-end/cyclejs-intro-todo/</link>
       <pubDate>Mon, 04 Jul 2016 09:52:18 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/front-end/cyclejs-intro-todo/</guid>
+      <guid>https://xiaomingplus.com/front-end/cyclejs-intro-todo/</guid>
       <description>流是在时间流逝的过程中产生的一系列事件的集合，和数组的概念类似，只不过流的索引是时间，它的值是事件。一个流或者一系列流可以作为另一个流的输入</description>
     </item>
     

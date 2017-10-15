@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mac on 小明plus</title>
-    <link>http://xiaomingplus.com/tags/mac/</link>
+    <link>https://xiaomingplus.com/tags/mac/</link>
     <description>Recent content in Mac on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 16 Oct 2017 02:04:18 +0800</lastBuildDate>
     
-        <atom:link href="http://xiaomingplus.com/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://xiaomingplus.com/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>mac新手开发装机必备软件</title>
-      <link>http://xiaomingplus.com/note/new-mac-soft/</link>
+      <link>https://xiaomingplus.com/note/new-mac-soft/</link>
       <pubDate>Mon, 16 Oct 2017 02:04:18 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/note/new-mac-soft/</guid>
+      <guid>https://xiaomingplus.com/note/new-mac-soft/</guid>
       <description>命令行客户端 iterm 效率客户端 alfred 清理客户端 腾讯电脑管家 mysql数据库客户端 sequel pro 压缩客户端 The Unarchiver 电脑保持常亮客户端 Caffeine 邮件客户端 airmail markdown客户</description>
     </item>
     

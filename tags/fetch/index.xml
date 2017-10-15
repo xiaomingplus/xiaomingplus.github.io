@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fetch on 小明plus</title>
-    <link>http://xiaomingplus.com/tags/fetch/</link>
+    <link>https://xiaomingplus.com/tags/fetch/</link>
     <description>Recent content in Fetch on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 24 Sep 2016 02:52:18 +0800</lastBuildDate>
     
-        <atom:link href="http://xiaomingplus.com/tags/fetch/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://xiaomingplus.com/tags/fetch/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>学会fetch的用法</title>
-      <link>http://xiaomingplus.com/front-end/understand-fetch/</link>
+      <link>https://xiaomingplus.com/front-end/understand-fetch/</link>
       <pubDate>Sat, 24 Sep 2016 02:52:18 +0800</pubDate>
       
-      <guid>http://xiaomingplus.com/front-end/understand-fetch/</guid>
+      <guid>https://xiaomingplus.com/front-end/understand-fetch/</guid>
       <description>fetch是web提供的一个可以获取异步资源的api，目前还没有被所有浏览器支持，它提供的api返回的是Promise对象，所以你在了解这个</description>
     </item>
     
