@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://xiaomingplus.com/full-stack/graphql-intro/</loc>
+    <lastmod>2017-10-28T12:54:46+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xiaomingplus.com/note/new-mac-soft/</loc>
     <lastmod>2017-10-16T02:04:18+08:00</lastmod>
   </url>
@@ -114,13 +119,19 @@
   
   <url>
     <loc>https://xiaomingplus.com/full-stack/</loc>
-    <lastmod>2016-10-08T22:56:36+08:00</lastmod>
+    <lastmod>2017-10-28T12:54:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaomingplus.com/tags/graphql/</loc>
+    <lastmod>2017-10-28T12:54:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xiaomingplus.com/tags/javascript/</loc>
-    <lastmod>2017-04-09T19:10:03+08:00</lastmod>
+    <lastmod>2017-10-28T12:54:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -161,6 +172,12 @@
   </url>
   
   <url>
+    <loc>https://xiaomingplus.com/tags/restful/</loc>
+    <lastmod>2017-10-28T12:54:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://xiaomingplus.com/tags/runtime/</loc>
     <lastmod>2016-10-08T22:56:36+08:00</lastmod>
     <priority>0</priority>
@@ -192,7 +209,7 @@
   
   <url>
     <loc>https://xiaomingplus.com/categories/%E5%85%A8%E6%A0%88/</loc>
-    <lastmod>2016-10-08T22:56:36+08:00</lastmod>
+    <lastmod>2017-10-28T12:54:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -216,7 +233,7 @@
   
   <url>
     <loc>https://xiaomingplus.com/</loc>
-    <lastmod>2017-10-16T02:04:18+08:00</lastmod>
+    <lastmod>2017-10-28T12:54:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   

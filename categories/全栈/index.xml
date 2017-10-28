@@ -5,10 +5,19 @@
     <link>https://xiaomingplus.com/categories/%E5%85%A8%E6%A0%88/</link>
     <description>Recent content in 全栈 on 小明plus</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Oct 2016 22:56:36 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Oct 2017 12:54:46 +0800</lastBuildDate>
     
         <atom:link href="https://xiaomingplus.com/categories/%E5%85%A8%E6%A0%88/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>如何为老板节省几个亿之graphql介绍</title>
+      <link>https://xiaomingplus.com/full-stack/graphql-intro/</link>
+      <pubDate>Sat, 28 Oct 2017 12:54:46 +0800</pubDate>
+      
+      <guid>https://xiaomingplus.com/full-stack/graphql-intro/</guid>
+      <description>写过接口和联调过接口的人想必都对接口的约定，文档维护和联调等问题经常头痛不已，因为我们的业务里有大量不同的应用和系统共同使用着许许多多的服务</description>
+    </item>
     
     <item>
       <title>javascript到底是如何运行的?</title>

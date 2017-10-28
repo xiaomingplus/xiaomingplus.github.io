@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Graphql on 小明plus</title>
+    <link>https://xiaomingplus.com/tags/graphql/</link>
+    <description>Recent content in Graphql on 小明plus</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 28 Oct 2017 12:54:46 +0800</lastBuildDate>
+    
+        <atom:link href="https://xiaomingplus.com/tags/graphql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何为老板节省几个亿之graphql介绍</title>
+      <link>https://xiaomingplus.com/full-stack/graphql-intro/</link>
+      <pubDate>Sat, 28 Oct 2017 12:54:46 +0800</pubDate>
+      
+      <guid>https://xiaomingplus.com/full-stack/graphql-intro/</guid>
+      <description>写过接口和联调过接口的人想必都对接口的约定，文档维护和联调等问题经常头痛不已，因为我们的业务里有大量不同的应用和系统共同使用着许许多多的服务</description>
+    </item>
+    
+  </channel>
+</rss>
