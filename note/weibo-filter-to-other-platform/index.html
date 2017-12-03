@@ -37,7 +37,7 @@
 			<div class="post">
 			 	<h1>解决IFTTT同步微博不能区分文字微博、图片微博、转发微博的问题</h1>
 				<div class="post-meta single-post-meta"> <span class="post-date">2017年9月16日 </span>
-					<span class="post-meta-sep"> / </span>约6分钟读完</span>
+					<span class="post-meta-sep"> / </span>约7分钟读完</span>
 					<span class="post-meta-sep"> / </span>
 					分类:
 					<span class="post-category"><a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span>
@@ -91,12 +91,12 @@
 <li><p>登录<a href="https://www.integromat.com/en/login">integromat</a>,点击Create a new scenario,作用是接收ifttt请求，并过滤之后，再分别触发上面1中的2个ifttt的webhook规则，ifttt去处理接下来的事情。</p>
 
 <ol>
-<li>webhook步骤（图片见下）：点击?:搜索webhook，并选择<code>webhooks</code>-&gt;<code>Custom Webhook</code>,点击Webhooks图标，看到Webhook的下拉框，点击右侧的<code>Add</code>,<code>Webhook name</code>填写<code>IFTTT weibo webhook</code>,<code>Data structure</code>右侧点击<code>Add</code>,Data Structure name填写<code>Weibo data structure</code>,点击Generator,Content type选择<code>Query String</code>,Sample data填写:<code>text=text&amp;image=imageUrl</code>,点击<code>Save</code>,Add data structure表单也点击<code>Save</code>,Add a hook也点击<code>Save</code>,你会在Webhooks看到一串如<code>https://hook.integromat.com/xxx</code>的url,把这个url记下来，待会儿用于ifttt触发微博后通知integromat
+<li>webhook步骤（图片见下）：点击?:搜索webhook，并选择<code>webhooks</code>-&gt;<code>Custom Webhook</code>,点击Webhooks图标，看到Webhook的下拉框，点击右侧的<code>Add</code>,<code>Webhook name</code>填写<code>IFTTT weibo webhook</code>,点击左下角的<code>Show advanced settings</code>,<code>Data structure</code>右侧点击<code>Add</code>,Data Structure name填写<code>Weibo data structure</code>,点击Generator,Content type选择<code>Query String</code>,Sample data填写:<code>text=text&amp;image=imageUrl</code>,点击<code>Save</code>,Add data structure表单也点击<code>Save</code>,Add a hook也点击<code>Save</code>,你会在Webhooks看到一串如<code>https://hook.integromat.com/xxx</code>的url,并且有一个正在loading的stop标志，表示它正在等待你完成首次触发你的webhook，如何触发呢？复制这个url,并且在这个url后面拼接一段<code>?text=text&amp;image=imageUrl</code>,最终会得到一个类似这样的url<code>https://hook.integromat.com/xxxxxxxxxxxxxxx?text=text&amp;image=imageUrl</code>，直接在浏览器里访问这个地址，如果界面提示<code>Successfuly determined</code>,说明成功了。把这个url记下来（不用加刚拼接的那段哈，只包括<code>https://hook.integromat.com/xxxxxxxxxxxxxxx</code>），待会儿用于ifttt触发微博后通知integromat
 <img src="http://ww1.sinaimg.cn/large/006tV6Vmgy1fjlm9af9taj31g60pddj7.jpg" alt="" /></li>
 <li>点击webhook图标右边的半圆，选择<code>Router</code>,我们要在Router里做过滤:
 
 <ul>
-<li>点击第一条分支的虚线中间部分，点击<code>set up a filter</code>,Lable填<code>image weibo</code>,点击<code>Condition</code>输入框，选左边的<code>image</code>,下拉框选择<code>exists</code>，点击OK，点击这条分支的末端？号，搜索<code>HTTP</code>,选择HTTP,选择<code>Make a request</code>,<code>https://maker.ifttt.com/trigger/imageWeibo/with/key/xxxxxx</code>,这里的xxxxxx要换成刚刚IFTTT步骤里最后一步获取到的Key,Method选择<code>POST</code>,Body Type选择<code>application/x-www-form-urlencode</code>,点击<code>Add item</code>,Key填<code>value1</code>,点击value的输入框，选择<code>text</code>,点击<code>Add item</code>,key填写<code>value2</code>,点击value的输入框，选择<code>image</code>,点击OK;</li>
+<li>点击第一条分支的虚线中间部分，点击<code>set up a filter</code>,Lable填<code>image weibo</code>,点击<code>Condition</code>输入框，选左边的<code>image</code>（如果看不到image，text，说明刚刚在触发第一次webhook的时候超时了，需要重新点击第一步里的Webhooks,点击Re-determine data structure,然后立即在浏览器中访问刚刚拼接好的地址，成功后继续刚刚的动作）,下拉框选择<code>exists</code>，点击OK，点击这条分支的末端？号，搜索<code>HTTP</code>,选择HTTP,选择<code>Make a request</code>,<code>https://maker.ifttt.com/trigger/imageWeibo/with/key/xxxxxx</code>,这里的xxxxxx要换成刚刚IFTTT步骤里最后一步获取到的Key,Method选择<code>POST</code>,Body Type选择<code>application/x-www-form-urlencode</code>,点击<code>Add item</code>,Key填<code>value1</code>,点击value的输入框，选择<code>text</code>,点击<code>Add item</code>,key填写<code>value2</code>,点击value的输入框，选择<code>image</code>,点击OK;</li>
 <li>点击第二条分支的虚线中间部分，点击<code>set up a filter</code>,Lable填<code>original weibo</code>,点击<code>Condition</code>输入框，选左边的<code>image</code>,下拉框选择<code>Does not exist</code>，点击右下角<code>Add and rule</code>,点击输入框，选择<code>text</code>,下拉框选择<code>Dose not matches Pattern(case insensitive)</code>,下面的输入框输入<code>(Repost)|(转发微博)|(\/\/)|(轉發微博)</code>,点击OK，点击这条分支的末端？号，搜索<code>HTTP</code>,选择HTTP,选择<code>Make a request</code>,<code>https://maker.ifttt.com/trigger/originalWeibo/with/key/xxxxxx</code>,这里的xxxxxx要换成刚刚IFTTT步骤里最后一步获取到的Key,Method选择<code>POST</code>,Body Type选择<code>Application/x-www-form-urlencode</code>,点击<code>Add item</code>,Key填<code>value1</code>,点击value的输入框，选择<code>text</code>,点击OK;</li>
 <li>点击左下角最后一个按钮，保存。点击<a href="https://www.integromat.com/scenarios">右上角Scenarios</a>，在列表里找到你刚刚添加的scenarios，点击右侧的OFF/ON,打开这个任务。</li>
 </ul></li>
